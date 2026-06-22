@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Kanit", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-dark: #0B1E36;
+  --color-brand-blue: #1369D5;
+}
+
+/* Custom scroll behavior and styling to match the aesthetic */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #ffffff;
+  color: #1e293b;
+}
+
+/* Custom styles for jigsaw pieces and mockups */
+.jigsaw-container {
+  perspective: 1000px;
+}
+

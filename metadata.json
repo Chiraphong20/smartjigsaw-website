@@ -1,0 +1,6 @@
+{
+  "name": "Smartjigsaw",
+  "description": "Smartjigsaw Landing Page - Intelligent Solutions for a Smarter Future. Business consultation, ERP & POS systems, AI Agent & Automation, and Custom Software Development.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
