@@ -5,15 +5,20 @@ import { container } from "../lib/layout";
 /* ─── แสดงรูป 2 ใบซ้อนกัน (web + pad) ─── */
 function DualImg({ img1, img2, alt }: { img1: string; img2: string; alt: string }) {
   return (
-    <div className="relative w-full" style={{ height: 240 }}>
-      {/* รูปใหญ่ (web) */}
-      <div className="absolute left-0 top-0 w-[78%] overflow-hidden">
-        <img src={img1} alt={alt} className="w-full h-full object-cover" />
-      </div>
-      {/* รูปเล็ก (pad) */}
-      <div className="absolute right-0 bottom-0 w-[46%] overflow-hidden">
-        <img src={img2} alt={alt + " pad"} className="w-full h-full object-cover" />
-      </div>
+    <div className="relative w-full" style={{ paddingBottom: "68%" }}>
+      {/* จอคอม — หลัก */}
+      <img
+        src={img1}
+        alt={alt}
+        className="absolute left-0 top-0 w-[82%] object-contain drop-shadow-lg"
+      />
+      {/* Tablet — ซ้อนมุมล่างขวา */}
+      <img
+        src={img2}
+        alt={alt + " tablet"}
+        className="absolute right-0 w-[44%] object-contain drop-shadow-xl z-10"
+        style={{ bottom: "20%" }}
+      />
     </div>
   );
 }
@@ -147,10 +152,12 @@ export default function Works() {
                 transition={{ duration: 0.6 }}
                 className="flex flex-col justify-center space-y-5"
               >
-                <div className="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center">
-                  <Icon className="w-6 h-6 text-brand-blue" />
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center shrink-0">
+                    <Icon className="w-6 h-6 text-brand-blue" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-brand-dark">{cap.title}</h3>
                 </div>
-                <h3 className="text-2xl font-bold text-brand-dark">{cap.title}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed max-w-md">{cap.desc}</p>
               </motion.div>
             );
@@ -167,7 +174,7 @@ export default function Works() {
             );
 
             return (
-              <div key={cap.id} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div key={cap.id} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 {cap.reverse ? (
                   <>
                     <div className="order-2 lg:order-1">{imgBlock}</div>

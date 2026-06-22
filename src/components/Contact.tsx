@@ -207,7 +207,7 @@ export default function Contact() {
                 <span className="text-white font-bold text-sm">ที่ตั้ง</span>
               </div>
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=14.9950915,102.1068360"
+                href="https://www.google.com/maps/dir/?api=1&destination=14.956087081730265,102.05299126664758"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative block group flex-1 min-h-[200px]"
@@ -215,7 +215,7 @@ export default function Contact() {
               >
                 <iframe
                   title="Smartjigsaw Location"
-                  src="https://maps.google.com/maps?q=14.9950915,102.1068360&t=m&z=16&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=14.956087081730265,102.05299126664758&t=m&z=17&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0, minHeight: 200, pointerEvents: "none", borderRadius: 16 }}
