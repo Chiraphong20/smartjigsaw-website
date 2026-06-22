@@ -30,7 +30,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 bg-white relative overflow-hidden">
       {/* Watermark มุมขวาล่าง */}
-      <div className="absolute bottom-0 right-0 pointer-events-none select-none" style={{ width: "75%", opacity:10 }}>
+      <div className="absolute bottom-0 right-0 pointer-events-none select-none" style={{ width: "35%", opacity: 0.1 }}>
         <img src="/images/Watermark%20background.png" alt="" className="w-full h-auto" draggable={false} />
       </div>
 
@@ -198,34 +198,29 @@ export default function Contact() {
             </div>
 
             {/* Map */}
-            <div
-              className="rounded-3xl flex-1 flex flex-col"
-              style={{ backgroundColor: "#0B1E36", padding: 12, gap: 10 }}
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=14.956087081730265,102.05299126664758"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-3xl overflow-hidden flex-1 min-h-[220px] relative block group"
+              style={{ backgroundColor: "#0B1E36", padding: 12 }}
             >
-              <div className="flex items-center gap-2 px-1">
-                <Map className="w-4 h-4 text-brand-blue" />
-                <span className="text-white font-bold text-sm">ที่ตั้ง</span>
+              <iframe
+                title="Smartjigsaw Location"
+                src="https://maps.google.com/maps?q=14.956087081730265,102.05299126664758&t=m&z=17&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: 220, pointerEvents: "none", borderRadius: 16 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <div className="absolute inset-0 bg-transparent group-hover:bg-brand-blue/5 transition-colors" />
+              <div className="absolute bottom-3 left-3 bg-brand-dark/90 text-white rounded-xl px-3 py-1.5 text-[10px] font-semibold flex items-center gap-1.5">
+                <Map className="w-3 h-3 text-brand-blue" />
+                <span>กดเพื่อนำทาง</span>
               </div>
-              <a
-                href="https://www.google.com/maps/dir/?api=1&destination=14.9950915,102.1068360"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative block group flex-1 min-h-[200px]"
-                style={{ borderRadius: 16, overflow: "hidden" }}
-              >
-                <iframe
-                  title="Smartjigsaw Location"
-                  src="https://maps.google.com/maps?q=14.9950915,102.1068360&t=m&z=16&ie=UTF8&iwloc=&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0, minHeight: 200, pointerEvents: "none", borderRadius: 16 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-                <div className="absolute inset-0 bg-transparent group-hover:bg-brand-blue/5 transition-colors" />
-              </a>
-            </div>
+            </a>
           </motion.div>
 
         </div>

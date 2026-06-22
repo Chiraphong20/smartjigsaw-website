@@ -5,15 +5,19 @@ import { container } from "../lib/layout";
 /* ─── แสดงรูป 2 ใบซ้อนกัน (web + pad) ─── */
 function DualImg({ img1, img2, alt }: { img1: string; img2: string; alt: string }) {
   return (
-    <div className="relative w-full" style={{ height: 240 }}>
-      {/* รูปใหญ่ (web) */}
-      <div className="absolute left-0 top-0 w-[78%] overflow-hidden">
-        <img src={img1} alt={alt} className="w-full h-full object-cover" />
-      </div>
-      {/* รูปเล็ก (pad) */}
-      <div className="absolute right-0 bottom-0 w-[46%] overflow-hidden">
-        <img src={img2} alt={alt + " pad"} className="w-full h-full object-cover" />
-      </div>
+    <div className="relative w-full" style={{ paddingBottom: "62%" }}>
+      {/* รูปใหญ่ — desktop */}
+      <img
+        src={img1}
+        alt={alt}
+        className="absolute left-0 top-0 w-[78%] object-cover rounded-sm shadow-md"
+      />
+      {/* รูปเล็ก — tablet ทับมุมขวาล่าง */}
+      <img
+        src={img2}
+        alt={alt + " tablet"}
+        className="absolute right-0 bottom-0 w-[46%] object-cover rounded-sm shadow-xl border-2 border-white"
+      />
     </div>
   );
 }
@@ -82,12 +86,11 @@ export default function Works() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="overflow-hidden"
           >
-            <img
-              src="/images/Home Growstore.png"
+            <DualImg
+              img1="/images/Home Growstore.png"
+              img2="/images/dashboard/Dashboard pad 2.2.png"
               alt="Growstore Dashboard"
-              className="w-full h-full object-cover"
             />
           </motion.div>
 
