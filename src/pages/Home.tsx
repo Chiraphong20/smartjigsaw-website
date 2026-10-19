@@ -34,7 +34,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="works">
         <div className="wrap">
           <div className="section-head">
             <div><h2>{HOME.videosTitle}</h2><p>{HOME.videosText}</p></div>
@@ -56,7 +56,7 @@ export default function Home() {
             <Link to="/about" className="link-more" style={{ marginTop: 18 }}>รู้จักเราเพิ่มเติม <ArrowRight size={16} /></Link>
           </div>
           <div>
-            <Cover image={COMPANY.image} color="#0E7C86" alt="ทีมงานของเรา" />
+            <Cover image={COMPANY.image} color="#1369D5" alt="ทีมงานของเรา" />
             <div className="stats" style={{ marginTop: 20 }}>
               {COMPANY.stats.map((s, i) => <div key={i} className="stat"><b>{s.n}</b><span>{s.label}</span></div>)}
             </div>
@@ -64,7 +64,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section alt" id="customers">
+      {CUSTOMERS.length > 0 && <section className="section alt" id="customers">
         <div className="wrap">
           <div className="section-head">
             <div><h2>{HOME.customersTitle}</h2><p>{HOME.customersText}</p></div>
@@ -74,9 +74,9 @@ export default function Home() {
             {CUSTOMERS.map((c, i) => <li key={i}>{safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</li>)}
           </ul>
         </div>
-      </section>
+      </section>}
 
-      <section className="section" id="events">
+      {EVENTS.length > 0 && <section className="section" id="events">
         <div className="wrap">
           <div className="section-head">
             <div><h2>{HOME.eventsTitle}</h2><p>{HOME.eventsText}</p></div>
@@ -94,9 +94,9 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section>}
 
-      <section className="section alt" id="news">
+      {NEWS.length > 0 && <section className="section alt" id="news">
         <div className="wrap">
           <div className="section-head">
             <div><h2>{HOME.newsTitle}</h2><p>{HOME.newsText}</p></div>
@@ -115,7 +115,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section>}
 
       <section className="section" id="contact">
         <div className="wrap">
@@ -125,13 +125,13 @@ export default function Home() {
               <p>{HOME.contactText}</p>
               <ul className="contact-list">
                 <li><Phone size={16} />{BRAND.salesPhone}</li>
-                <li><MessageCircle size={16} />LINE {BRAND.line}</li>
-                <li><Mail size={16} />{BRAND.email}</li>
-                <li><MapPin size={16} />{BRAND.hours}</li>
+                {BRAND.line && <li><MessageCircle size={16} />LINE {BRAND.line}</li>}
+                {BRAND.email && <li><Mail size={16} />{BRAND.email}</li>}
+                <li><MapPin size={16} />{BRAND.address}</li>
               </ul>
             </div>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <Link to="/contact" className="btn accent">ขอคำปรึกษาฟรี</Link>
+              <Link to="/contact" className="btn accent">ขอคำปรึกษา</Link>
               <a href={`tel:${BRAND.salesPhone.replace(/-/g, '')}`} className="btn ghost" style={{ background: 'rgba(255,255,255,.14)', color: '#fff', borderColor: 'rgba(255,255,255,.35)' }}>โทร {BRAND.salesPhone}</a>
             </div>
           </div>

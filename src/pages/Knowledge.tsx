@@ -4,7 +4,7 @@ import { ARTICLES, thaiDate } from '../site'
 import { PageHead } from './Products'
 import { NotFound } from './Others'
 
-const CATS = ['ทั้งหมด', 'ERP', 'POS', 'HRM', 'ข่าวสาร'] as const
+const CATS = ['ทั้งหมด', 'ERP', 'POS', 'ข่าวสาร'] as const
 
 export function Knowledge() {
   const [params] = useSearchParams()

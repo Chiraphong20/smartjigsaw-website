@@ -10,6 +10,7 @@ export function Customers() {
       <PageHead title="ลูกค้าของเรา" lead={HOME.customersText} crumbs={[{ label: 'ลูกค้าของเรา' }]} />
       <section className="section">
         <div className="wrap">
+          {CUSTOMERS.length === 0 && <p>กำลังรวบรวมรายชื่อลูกค้า — ติดตามได้เร็วๆ นี้</p>}
           <ul className="showcase">
             {featured.map((c, i) => (
               <li key={i}>

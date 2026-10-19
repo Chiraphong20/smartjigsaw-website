@@ -17,13 +17,13 @@ export function NotFound() {
 export function Services() {
   return (
     <>
-      <PageHead title="บริการหลังการขาย" lead="ทีมงานดูแลตั้งแต่วันติดตั้งจนถึงวันที่ธุรกิจคุณโตขึ้น" crumbs={[{ label: 'บริการ' }]} />
+      <PageHead title="วิธีทำงานของเรา" lead="ค่านิยม 4 ข้อที่เรายึดถือในการทำงานกับลูกค้า" crumbs={[{ label: 'วิธีทำงาน' }]} />
       <section className="section"><div className="wrap grid c2">
         {SERVICES.map(s => <div key={s.title} className="card"><h3>{s.title}</h3><p>{s.text}</p></div>)}
       </div></section>
       <section className="section alt"><div className="wrap">
-        <div className="band"><div><h2>แจ้งปัญหาหรือขอความช่วยเหลือ</h2><p>ฝ่ายบริการ {BRAND.servicePhone} · ไลน์ {BRAND.line} · {BRAND.hours}</p></div>
-          <Link to="/contact" className="btn accent">เปิดเรื่องแจ้งปัญหา</Link></div>
+        <div className="band"><div><h2>อยากคุยกับทีมงาน?</h2><p>โทร {BRAND.servicePhone}{BRAND.line ? ` · ไลน์ ${BRAND.line}` : ''}{BRAND.hours ? ` · ${BRAND.hours}` : ''}</p></div>
+          <Link to="/contact" className="btn accent">ติดต่อเรา</Link></div>
       </div></section>
     </>
   )
@@ -34,6 +34,7 @@ export function Training() {
     <>
       <PageHead title="หลักสูตรอบรม" lead="เรียนรู้การใช้งานระบบกับวิทยากรที่ใช้งานจริง ทั้งห้องเรียนและ e-Learning" crumbs={[{ label: 'อบรม' }]} />
       <section className="section"><div className="wrap grid c2">
+        {COURSES.length === 0 && <p>กำลังจัดทำหลักสูตร — ติดตามได้เร็วๆ นี้ หรือ<Link to="/contact" className="link-more">ติดต่อทีมงาน</Link></p>}
         {COURSES.map(c => (
           <div key={c.id} className="card">
             <div className="meta"><span className="tag">{c.level}</span>{c.hours} ชั่วโมง · {c.price}</div>
@@ -53,9 +54,9 @@ export function About() {
       <PageHead title="เกี่ยวกับเรา" lead={BRAND.tagline} crumbs={[{ label: 'เกี่ยวกับเรา' }]} />
       <section className="section"><div className="wrap two">
         <div className="prose">
-          <p>{BRAND.company} พัฒนาซอฟต์แวร์บริหารธุรกิจสำหรับ SME ไทย ครอบคลุมบัญชี เงินเดือน หน้าร้าน และงานขายนอกสถานที่ โดยออกแบบจากปัญหาจริงที่ลูกค้าเจอในแต่ละวัน</p>
-          <p>เรามีทีมพัฒนา ทีมติดตั้ง และทีมซัพพอร์ตในที่เดียว ลูกค้าจึงได้คุยกับคนที่เข้าใจทั้งตัวระบบและธุรกิจของตัวเอง ไม่ต้องส่งเรื่องต่อหลายทอด</p>
-          <p>ข้อความในหน้านี้เป็นตัวอย่าง ให้แก้เป็นประวัติ วิสัยทัศน์ และรางวัลจริงของบริษัทคุณที่ <code>src/site.ts</code> และ <code>src/pages/Others.tsx</code></p>
+          <p>{COMPANY.text[0]}</p>
+          <p>{COMPANY.text[1]}</p>
+          <p>ค่านิยมของเรา: ความเรียบง่าย · ความจริงใจ · การลงมือทำจริง · ความยั่งยืน</p>
         </div>
         <div className="card stats" style={{ gridTemplateColumns: '1fr 1fr' }}>
           {COMPANY.stats.map((s, i) => <div key={i} className="stat"><b>{s.n}</b><span>{s.label}</span></div>)}
@@ -78,7 +79,7 @@ export function Contact() {
   }
   return (
     <>
-      <PageHead title="ติดต่อเรา" lead="บอกความต้องการของคุณ ทีมงานจะติดต่อกลับภายใน 1 วันทำการ" crumbs={[{ label: 'ติดต่อ' }]} />
+      <PageHead title="ติดต่อเรา" lead="บอกความต้องการของคุณ ทีมงานจะติดต่อกลับโดยเร็วที่สุด" crumbs={[{ label: 'ติดต่อ' }]} />
       <section className="section"><div className="wrap two">
         <form className="card form" onSubmit={submit}>
           <div className="row2">
@@ -89,21 +90,21 @@ export function Contact() {
             <label>เบอร์โทร<input name="phone" required type="tel" maxLength={40} placeholder="08x-xxx-xxxx" /></label>
             <label>อีเมล<input name="email" type="email" maxLength={160} placeholder="name@company.com" /></label>
           </div>
-          <label>สนใจระบบ
-            <select name="interest" defaultValue=""><option value="" disabled>เลือกระบบ</option>{PRODUCTS.map(p => <option key={p.slug}>{p.name}</option>)}<option>ยังไม่แน่ใจ ขอคำแนะนำ</option></select>
+          <label>สนใจบริการ
+            <select name="interest" defaultValue=""><option value="" disabled>เลือกบริการ</option>{PRODUCTS.map(p => <option key={p.slug}>{p.name}</option>)}<option>ยังไม่แน่ใจ ขอคำแนะนำ</option></select>
           </label>
           <label>รายละเอียด<textarea name="message" rows={4} maxLength={3000} placeholder="ประเภทธุรกิจ จำนวนสาขา/พนักงาน และสิ่งที่อยากแก้" /></label>
-          {state === 'sent' ? <div className="ok" role="status">รับข้อมูลแล้ว ทีมงานจะติดต่อกลับภายใน 1 วันทำการ</div>
+          {state === 'sent' ? <div className="ok" role="status">รับข้อมูลแล้ว ทีมงานจะติดต่อกลับโดยเร็วที่สุด</div>
             : <>
               {state === 'error' && <div className="note" role="alert" style={{ color: '#b42318' }}>ส่งข้อมูลไม่สำเร็จ กรุณาลองใหม่ หรือโทร {BRAND.salesPhone}</div>}
               <button className="btn primary" type="submit" disabled={state === 'sending'}>{state === 'sending' ? 'กำลังส่ง…' : 'ส่งข้อมูล'}</button>
             </>}
         </form>
         <aside className="card" style={{ display: 'grid', gap: 16 }}>
-          <div style={{ display: 'flex', gap: 12 }}><Phone size={19} /><div><b>ฝ่ายขาย</b><br />{BRAND.salesPhone}<br /><span className="note">ฝ่ายบริการ {BRAND.servicePhone}</span></div></div>
-          <div style={{ display: 'flex', gap: 12 }}><Mail size={19} /><div><b>อีเมล</b><br />{BRAND.email}</div></div>
-          <div style={{ display: 'flex', gap: 12 }}><MessageCircle size={19} /><div><b>ไลน์</b><br />{BRAND.line}</div></div>
-          <div style={{ display: 'flex', gap: 12 }}><Clock size={19} /><div><b>เวลาทำการ</b><br />{BRAND.hours}</div></div>
+          <div style={{ display: 'flex', gap: 12 }}><Phone size={19} /><div><b>โทร</b><br />{BRAND.salesPhone}{BRAND.servicePhone && BRAND.servicePhone !== BRAND.salesPhone && <><br /><span className="note">ฝ่ายบริการ {BRAND.servicePhone}</span></>}</div></div>
+          {BRAND.email && <div style={{ display: 'flex', gap: 12 }}><Mail size={19} /><div><b>อีเมล</b><br />{BRAND.email}</div></div>}
+          {BRAND.line && <div style={{ display: 'flex', gap: 12 }}><MessageCircle size={19} /><div><b>ไลน์</b><br />{BRAND.line}</div></div>}
+          {BRAND.hours && <div style={{ display: 'flex', gap: 12 }}><Clock size={19} /><div><b>เวลาทำการ</b><br />{BRAND.hours}</div></div>}
           <div style={{ display: 'flex', gap: 12 }}><MapPin size={19} /><div><b>ที่อยู่</b><br />{BRAND.address}</div></div>
         </aside>
       </div></section>

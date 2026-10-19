@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { Boxes, ChevronDown, ChevronRight, ExternalLink, LogIn, Mail, MapPin, Menu, Phone, Search, X } from 'lucide-react'
+import { ChevronDown, ChevronRight, ExternalLink, LogIn, Mail, MapPin, Menu, Phone, Search, X } from 'lucide-react'
 import { BRAND, NAV, PRODUCTS, SOCIAL, safeUrl } from '../site'
 
 const LANGS = ['TH', 'EN', '中文', '日本語']
@@ -32,14 +32,16 @@ function Header() {
       <div className="topbar">
         <div className="wrap">
           <div className="row">
-            <span className="social-label">ติดตามเรา</span>
-            <ul className="social" aria-label="ช่องทางโซเชียล">
-              {SOCIAL.filter(s => safeUrl(s.href)).map(s => <li key={s.label}><a href={safeUrl(s.href)} target="_blank" rel="noopener noreferrer">{s.label}</a></li>)}
-            </ul>
+            {SOCIAL.some(s => safeUrl(s.href)) && <>
+              <span className="social-label">ติดตามเรา</span>
+              <ul className="social" aria-label="ช่องทางโซเชียล">
+                {SOCIAL.filter(s => safeUrl(s.href)).map(s => <li key={s.label}><a href={safeUrl(s.href)} target="_blank" rel="noopener noreferrer">{s.label}</a></li>)}
+              </ul>
+            </>}
           </div>
           <div className="row">
-            <span>ฝ่ายขาย <a href={`tel:${BRAND.salesPhone.replace(/-/g, '')}`}>{BRAND.salesPhone}</a></span>
-            <span className="hide-sm">ฝ่ายบริการ <a href={`tel:${BRAND.servicePhone.replace(/-/g, '')}`}>{BRAND.servicePhone}</a></span>
+            <span>{BRAND.servicePhone && BRAND.servicePhone !== BRAND.salesPhone ? 'ฝ่ายขาย' : 'โทร'} <a href={`tel:${BRAND.salesPhone.replace(/-/g, '')}`}>{BRAND.salesPhone}</a></span>
+            {BRAND.servicePhone && BRAND.servicePhone !== BRAND.salesPhone && <span className="hide-sm">ฝ่ายบริการ <a href={`tel:${BRAND.servicePhone.replace(/-/g, '')}`}>{BRAND.servicePhone}</a></span>}
             <div className="lang" role="group" aria-label="เลือกภาษา (ตัวอย่าง)">
               {LANGS.map(l => <button key={l} aria-pressed={lang === l} onClick={() => setLang(l)}>{l}</button>)}
             </div>
@@ -50,7 +52,7 @@ function Header() {
       <header className="header">
         <div className="wrap">
           <Link to="/" className="logo" aria-label={`${BRAND.name} หน้าแรก`}>
-            <span className="logo-mark"><Boxes size={19} /></span>{BRAND.name}
+            <img className="logo-img" src="/images/logo.png" alt="" width={36} height={34} />{BRAND.name}
           </Link>
           <nav className={`nav${open ? ' open' : ''}`} aria-label="เมนูหลัก">
             {NAV.map((item, n) => (
@@ -100,20 +102,19 @@ function Footer() {
         <div className="wrap">
           <div className="cols">
             <div>
-              <div className="logo" style={{ color: '#fff' }}><span className="logo-mark"><Boxes size={19} /></span>{BRAND.name}</div>
+              <div className="logo" style={{ color: '#fff' }}><img className="logo-img" src="/images/logo.png" alt="" width={36} height={34} />{BRAND.name}</div>
               <p style={{ marginTop: 12, maxWidth: '34ch' }}>{BRAND.tagline}</p>
-              <p style={{ marginTop: 12, fontSize: '0.85rem' }}>{BRAND.company}<br />เลขประจำตัวผู้เสียภาษี {BRAND.taxId}</p>
+              {BRAND.taxId && <p style={{ marginTop: 12, fontSize: '0.85rem' }}>{BRAND.company}<br />เลขประจำตัวผู้เสียภาษี {BRAND.taxId}</p>}
             </div>
             <div>
-              <h4>สินค้า</h4>
+              <h4>บริการ</h4>
               <ul>{PRODUCTS.map(p => <li key={p.slug}><Link to={`/products/${p.slug}`}>{p.name}</Link></li>)}</ul>
             </div>
             <div>
               <h4>บริการและความรู้</h4>
               <ul>
                 <li><Link to="/knowledge">ศูนย์ความรู้</Link></li>
-                <li><Link to="/services">บริการหลังการขาย</Link></li>
-                <li><Link to="/training">หลักสูตรอบรม</Link></li>
+                <li><Link to="/services">วิธีทำงานของเรา</Link></li>
                 <li><Link to="/about">เกี่ยวกับเรา</Link></li>
                 <li><Link to="/contact">ติดต่อเรา</Link></li>
               </ul>
@@ -123,14 +124,13 @@ function Footer() {
               <ul>
                 <li style={{ display: 'flex', gap: 8 }}><MapPin size={16} style={{ flex: 'none', marginTop: 4 }} />{BRAND.address}</li>
                 <li style={{ display: 'flex', gap: 8 }}><Phone size={16} />{BRAND.salesPhone}</li>
-                <li style={{ display: 'flex', gap: 8 }}><Mail size={16} />{BRAND.email}</li>
+                {BRAND.email && <li style={{ display: 'flex', gap: 8 }}><Mail size={16} />{BRAND.email}</li>}
               </ul>
-              <div className="map" aria-hidden>แผนที่ (ใส่ Google Maps embed ที่นี่)</div>
+              <div className="map"><iframe title="แผนที่ที่ตั้ง Smart Jigsaw" loading="lazy" referrerPolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=14.956087081730265,102.05299126664758&t=m&z=17&ie=UTF8&iwloc=&output=embed" /></div>
             </div>
           </div>
           <div className="legal">
             <span>© 2569 {BRAND.company} สงวนลิขสิทธิ์</span>
-            <span>เว็บไซต์ตัวอย่าง — ข้อความและข้อมูลทั้งหมดเป็นข้อมูลสมมติ</span>
           </div>
         </div>
       </footer>

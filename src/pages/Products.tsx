@@ -18,7 +18,7 @@ export function PageHead({ title, lead, crumbs }: { title: string; lead?: string
 export function Products() {
   return (
     <>
-      <PageHead title="สินค้าและโซลูชัน" lead="เลือกระบบตามงานที่ต้องทำ ใช้แยกกันได้ หรือรวมกันให้ข้อมูลเชื่อมทั้งองค์กร" />
+      <PageHead title="บริการและโซลูชัน" lead="บริการ 4 ด้านของ Smart Jigsaw เลือกใช้แยกกันได้ หรือรวมกันให้ทำงานเชื่อมกันทั้งองค์กร" />
       <section className="section">
         <div className="wrap grid c2">
           {PRODUCTS.map(p => {
@@ -48,7 +48,7 @@ export function ProductDetail() {
   const others = PRODUCTS.filter(x => x.slug !== p.slug)
   return (
     <>
-      <PageHead title={p.name} lead={p.short} crumbs={[{ label: 'สินค้า', to: '/products' }, { label: p.name }]} />
+      <PageHead title={p.name} lead={p.short} crumbs={[{ label: 'บริการ', to: '/products' }, { label: p.name }]} />
       <section className="section">
         <div className="wrap two">
           <div>
@@ -56,7 +56,7 @@ export function ProductDetail() {
             <p className="prose" style={{ fontSize: '1.08rem' }}>{p.summary}</p>
             <h2 style={{ fontSize: '1.3rem', margin: '30px 0 14px' }}>จุดเด่น</h2>
             <ul className="check">{p.features.map(f => <li key={f}><Check size={18} /><span>{f}</span></li>)}</ul>
-            <h2 style={{ fontSize: '1.3rem', margin: '34px 0 14px' }}>โมดูลในระบบ</h2>
+            <h2 style={{ fontSize: '1.3rem', margin: '34px 0 14px' }}>ขอบเขตงาน</h2>
             <div className="grid c2">
               {p.modules.map(m => <div key={m.title} className="card"><h3 style={{ fontSize: '1rem' }}>{m.title}</h3><p>{m.text}</p></div>)}
             </div>
@@ -64,15 +64,15 @@ export function ProductDetail() {
           <aside className="side card">
             <h3>เหมาะกับใคร</h3>
             <p style={{ margin: '8px 0 18px' }}>{p.forWho}</p>
-            <Link to="/contact" className="btn primary" style={{ width: '100%' }}>ขอใบเสนอราคา</Link>
-            <Link to="/training" className="btn ghost" style={{ width: '100%', marginTop: 10 }}>ดูหลักสูตรอบรม</Link>
-            <p className="note" style={{ marginTop: 14 }}>สอบถามฝ่ายขาย {BRAND.salesPhone}</p>
+            <Link to="/contact" className="btn primary" style={{ width: '100%' }}>ขอคำปรึกษา</Link>
+            <Link to="/#works" className="btn ghost" style={{ width: '100%', marginTop: 10 }}>ดูตัวอย่างผลงาน</Link>
+            <p className="note" style={{ marginTop: 14 }}>โทรสอบถาม {BRAND.salesPhone}</p>
           </aside>
         </div>
       </section>
       <section className="section alt">
         <div className="wrap">
-          <div className="section-head"><h2>ระบบอื่นที่ใช้ร่วมกันได้</h2></div>
+          <div className="section-head"><h2>บริการอื่นของเรา</h2></div>
           <div className="grid c4">
             {others.map(o => { const I = o.icon; return (
               <Link key={o.slug} to={`/products/${o.slug}`} className="card">

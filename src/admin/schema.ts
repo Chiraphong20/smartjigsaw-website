@@ -197,7 +197,7 @@ export const SECTIONS: Section[] = [
     fields: [
       { key: 'title', label: 'ชื่อบทความ', type: 'text' },
       { key: 'slug', label: 'ชื่อในลิงก์ (ภาษาอังกฤษ ตัวเล็ก ใช้ - คั่น)', type: 'text', help: 'เปลี่ยนแล้วลิงก์เดิมของบทความนี้จะใช้ไม่ได้' },
-      { key: 'category', label: 'หมวด', type: 'select', options: () => ['ERP', 'POS', 'HRM', 'ข่าวสาร'].map(c => [c, c] as [string, string]) },
+      { key: 'category', label: 'หมวด', type: 'select', options: () => ['ERP', 'POS', 'ข่าวสาร'].map(c => [c, c] as [string, string]) },
       { key: 'date', label: 'วันที่', type: 'text', help: 'รูปแบบ 2569-10-10 (ปี พ.ศ.-เดือน-วัน)' },
       { key: 'excerpt', label: 'ข้อความย่อ', type: 'textarea' },
       { key: 'body', label: 'เนื้อหา (แต่ละกล่อง = 1 ย่อหน้า)', type: 'strings', multiline: true },
