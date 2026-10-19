@@ -186,6 +186,7 @@ export const HERO: HeroSlide[] = [
 
 // หัวข้อและคำอธิบายของแต่ละส่วนในหน้าแรก
 export const HOME = {
+  programsTitle: 'โปรแกรมบริหารสำเร็จรูป SoftBridge',
   videosTitle: 'วิดีโอแนะนำระบบ', videosText: 'ดูการใช้งานจริงของแต่ละระบบ ก่อนตัดสินใจ',
   companyTag: 'Our Company',
   customersTitle: 'ลูกค้าของเรา', customersText: 'ธุรกิจหลากหลายประเภทที่ไว้วางใจให้เราดูแลระบบ',

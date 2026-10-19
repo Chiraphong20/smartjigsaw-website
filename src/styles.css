@@ -217,3 +217,12 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--p
 .showcase h3 { color: var(--primary); font-weight: 500; }
 .showcase p { margin-top: 6px; }
 @media (max-width: 520px) { .showcase li { grid-template-columns: 96px 1fr; gap: 14px; } .showcase-thumb { width: 96px; font-size: 0.8rem; padding: 6px; } }
+
+/* program buttons */
+.programs-title { text-align: center; font-weight: 400; font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 24px; }
+.programs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.program { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 130px; padding: 18px 16px; border-radius: 20px; color: #fff; text-align: center; box-shadow: 0 8px 20px rgba(15, 31, 61, 0.18); transition: transform 0.2s, box-shadow 0.2s; }
+.program strong { font-family: var(--font-head); font-size: 1.25rem; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25); }
+.program span { font-size: 0.9rem; opacity: 0.95; }
+.program:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(15, 31, 61, 0.25); }
+@media (prefers-reduced-motion: reduce) { .program { transition: none; } .program:hover { transform: none; } }

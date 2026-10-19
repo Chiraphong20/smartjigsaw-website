@@ -3,7 +3,7 @@ import { ArrowRight, Calendar, Mail, MapPin, MessageCircle, Phone } from 'lucide
 import Hero from '../components/Hero'
 import VideoSection from '../components/VideoSection'
 import AdBanner from '../components/AdBanner'
-import { BRAND, COMPANY, CUSTOMERS, EVENTS, HOME, NEWS, safeUrl, thaiDate } from '../site'
+import { BRAND, COMPANY, PRODUCTS, CUSTOMERS, EVENTS, HOME, NEWS, safeUrl, thaiDate } from '../site'
 
 // ภาพประกอบ: ถ้ามีไฟล์ใน public/ ให้ใส่ path ที่ image ใน site.ts, ไม่มีจะใช้พื้นสีไล่เฉดแทน
 function Cover({ image, color, alt }: { image?: string; color: string; alt: string }) {
@@ -17,6 +17,22 @@ export default function Home() {
   return (
     <>
       <Hero />
+
+      <section className="section" id="programs">
+        <div className="wrap">
+          <h2 className="programs-title">{HOME.programsTitle}</h2>
+          <div className="programs">
+            {PRODUCTS.slice(0, 4).map(p => (
+              <Link key={p.slug} to={`/products/${p.slug}`} className="program"
+                style={{ background: `linear-gradient(135deg, ${p.color}, color-mix(in srgb, ${p.color} 70%, #fff))` }}>
+                <p.icon size={30} aria-hidden="true" />
+                <strong>{p.name}</strong>
+                <span>{p.short}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section">
         <div className="wrap">

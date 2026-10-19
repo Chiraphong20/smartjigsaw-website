@@ -140,6 +140,7 @@ export const SECTIONS: Section[] = [
   {
     key: 'HOME', label: 'หัวข้อแต่ละส่วนของหน้าแรก', group: 'หน้าแรก', kind: 'object',
     fields: [
+      { key: 'programsTitle', label: 'ปุ่มโปรแกรม 4 ปุ่ม: หัวข้อ', type: 'text' },
       { key: 'videosTitle', label: 'วิดีโอ: หัวข้อ', type: 'text' }, { key: 'videosText', label: 'วิดีโอ: คำอธิบาย', type: 'text' },
       { key: 'companyTag', label: 'บริษัท: ป้ายหัวข้อ', type: 'text' },
       { key: 'customersTitle', label: 'ลูกค้า: หัวข้อ', type: 'text' }, { key: 'customersText', label: 'ลูกค้า: คำอธิบาย', type: 'text' },
