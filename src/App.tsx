@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import Home from './pages/Home'
 import { ProductDetail, Products } from './pages/Products'
 import { ArticlePage, Knowledge } from './pages/Knowledge'
+import { Customers } from './pages/Customers'
 import { About, Account, Contact, NotFound, Services, Training } from './pages/Others'
 
 // หน้าแอดมินโหลดแยก (lazy) เพื่อไม่ให้หนักหน้าเว็บของผู้เยี่ยมชม
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="products/:slug" element={<ProductDetail />} />
         <Route path="knowledge" element={<Knowledge />} />
         <Route path="knowledge/:slug" element={<ArticlePage />} />
+        <Route path="customers" element={<Customers />} />
         <Route path="services" element={<Services />} />
         <Route path="training" element={<Training />} />
         <Route path="about" element={<About />} />

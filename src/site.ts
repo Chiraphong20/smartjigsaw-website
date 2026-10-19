@@ -99,7 +99,7 @@ export const NAV: NavItem[] = [
   { label: 'สินค้า', to: '/products', children: PRODUCTS.map(p => ({ label: p.name, to: `/products/${p.slug}` })) },
   { label: 'บริการ', to: '', children: [{ label: 'ติดตั้งและดูแลหลังการขาย', to: '/services' }, { label: 'หลักสูตรอบรม', to: '/training' }] },
   { label: 'ประชาสัมพันธ์', to: '', children: [
-    { label: 'เกี่ยวกับเรา', to: '/about' }, { label: 'ลูกค้าของเรา', to: '/#customers' },
+    { label: 'เกี่ยวกับเรา', to: '/about' }, { label: 'ลูกค้าของเรา', to: '/customers' },
     { label: 'กิจกรรมและสัมมนา', to: '/#events' }, { label: 'ข่าวและสื่อ', to: '/#news' }, { label: 'ศูนย์ความรู้', to: '/knowledge' },
   ] },
   { label: 'ติดต่อเรา', to: '', children: [{ label: 'ติดต่อฝ่ายต่างๆ', to: '/contact' }, { label: 'ขอเดโม/ทดลองใช้', to: '/contact' }, { label: 'ร่วมงานกับเรา', to: '/contact' }] },
@@ -139,8 +139,20 @@ export const COMPANY = {
   image: undefined as string | undefined,
 }
 
-export interface Customer { name: string; logo?: string }
-export const CUSTOMERS: Customer[] = ['ร้านสยามมาร์ท', 'บจก. นอร์ทฟู้ดส์', 'ตะวันออกกลุ่มค้าปลีก', 'ศรีสุขเวชภัณฑ์', 'พรีเมียร์โลจิสติกส์', 'บ้านสวนกาแฟ', 'ไทยเทรดดิ้ง', 'เมโทรออโต้พาร์ท', 'ลานนาฟาร์มา', 'ใต้ฟ้าเบเกอรี่', 'กรีนวัลเลย์', 'อินดัสเทรียลซัพพลาย'].map(name => ({ name }))
+export interface Customer { name: string; logo?: string; place?: string; text?: string; image?: string; color?: string }
+// ข้อมูลตัวอย่าง — แทนด้วยลูกค้าจริงที่อนุญาตให้เผยแพร่ (ใส่ image/place/text เพื่อให้แสดงในหน้า "ลูกค้าของเรา")
+const CUSTOMER_SEED: [string, string, string, string][] = [
+  ['ร้านสยามมาร์ท', 'จ.นครปฐม', 'ร้านค้าปลีกที่ใช้ POS และระบบสต็อกควบคุมสินค้าหลายคลัง', '#0E7C86'],
+  ['บจก. นอร์ทฟู้ดส์', 'จ.เชียงใหม่', 'ผู้จัดจำหน่ายอาหารที่ใช้ ERP และขายหน้ารถ', '#E0641F'],
+  ['ตะวันออกกลุ่มค้าปลีก', 'จ.ชลบุรี', 'ร้านค้าส่งหลายสาขาที่ดูยอดขายรวมแบบเรียลไทม์', '#2F5DD0'],
+  ['ศรีสุขเวชภัณฑ์', 'จ.ขอนแก่น', 'ร้านเวชภัณฑ์ที่คุมสต็อกและวันหมดอายุสินค้า', '#0F8F4F'],
+  ['พรีเมียร์โลจิสติกส์', 'กรุงเทพฯ', 'ผู้ให้บริการขนส่งที่ใช้ ERP และ HRM ร่วมกัน', '#7A4DCB'],
+  ['บ้านสวนกาแฟ', 'จ.เชียงราย', 'ร้านกาแฟหลายสาขาที่ใช้ POS และแต้มสมาชิก', '#0F1F3D'],
+]
+export const CUSTOMERS: Customer[] = [
+  ...CUSTOMER_SEED.map(([name, place, text, color]) => ({ name, place, text, color })),
+  ...['ไทยเทรดดิ้ง', 'เมโทรออโต้พาร์ท', 'ลานนาฟาร์มา', 'ใต้ฟ้าเบเกอรี่', 'กรีนวัลเลย์', 'อินดัสเทรียลซัพพลาย'].map(name => ({ name })),
+]
 
 // กิจกรรม/งานสัมมนา — image เหมือน ADS
 export interface EventItem { title: string; date: string; place: string; text: string; image?: string; color: string }

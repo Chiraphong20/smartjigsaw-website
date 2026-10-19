@@ -103,8 +103,15 @@ export const SECTIONS: Section[] = [
   {
     key: 'CUSTOMERS', label: 'Our Customer', group: 'หน้าแรก', kind: 'list', titleKey: 'name',
     help: 'ใส่โลโก้ลูกค้าได้ ถ้าไม่ใส่จะแสดงเป็นชื่อ',
-    blank: () => ({ name: 'ลูกค้าใหม่', logo: '' }),
-    fields: [{ key: 'name', label: 'ชื่อลูกค้า', type: 'text' }, { key: 'logo', label: 'โลโก้', type: 'image', spec: 'logo' }],
+    blank: () => ({ name: 'ลูกค้าใหม่', logo: '', place: '', text: '', image: '', color: '#0E7C86' }),
+    fields: [
+      { key: 'name', label: 'ชื่อลูกค้า', type: 'text' },
+      { key: 'logo', label: 'โลโก้', type: 'image', spec: 'logo' },
+      { key: 'place', label: 'ที่ตั้ง (เช่น จ.นครปฐม)', type: 'text' },
+      { key: 'text', label: 'ข้อความแนะนำร้าน (แสดงในหน้า ลูกค้าของเรา)', type: 'textarea' },
+      { key: 'image', label: 'ภาพร้าน/โปสเตอร์', type: 'image', spec: 'cover' },
+      { key: 'color', label: 'สีพื้น (เมื่อไม่มีภาพ)', type: 'color' },
+    ],
   },
   {
     key: 'EVENTS', label: 'กิจกรรม/สัมมนา', group: 'หน้าแรก', kind: 'list', titleKey: 'title',

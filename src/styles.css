@@ -209,3 +209,11 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--p
   .topbar .row.hide-sm { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+/* customer showcase list */
+.showcase { list-style: none; margin: 0; padding: 0; display: grid; gap: 28px; }
+.showcase li { display: grid; grid-template-columns: 200px 1fr; gap: 20px; align-items: start; }
+.showcase-thumb { width: 200px; aspect-ratio: 1; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.25); object-fit: cover; display: grid; place-items: center; color: #fff; font-family: var(--font-head); font-weight: 700; text-align: center; padding: 12px; }
+.showcase h3 { color: var(--primary); font-weight: 500; }
+.showcase p { margin-top: 6px; }
+@media (max-width: 520px) { .showcase li { grid-template-columns: 96px 1fr; gap: 14px; } .showcase-thumb { width: 96px; font-size: 0.8rem; padding: 6px; } }

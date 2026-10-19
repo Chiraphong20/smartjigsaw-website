@@ -52,6 +52,7 @@ export default function Home() {
         <div className="wrap">
           <div className="section-head">
             <div><h2>{HOME.customersTitle}</h2><p>{HOME.customersText}</p></div>
+            <Link to="/customers" className="link-more">ดูร้านลูกค้าทั้งหมด →</Link>
           </div>
           <ul className="logos">
             {CUSTOMERS.map((c, i) => <li key={i}>{safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</li>)}
