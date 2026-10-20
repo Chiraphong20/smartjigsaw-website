@@ -1,4 +1,3 @@
-import { Suspense, lazy } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
@@ -7,13 +6,9 @@ import { ArticlePage, Knowledge } from './pages/Knowledge'
 import { Customers } from './pages/Customers'
 import { About, Account, Contact, NotFound, Services, Training } from './pages/Others'
 
-// หน้าแอดมินโหลดแยก (lazy) เพื่อไม่ให้หนักหน้าเว็บของผู้เยี่ยมชม
-const Admin = lazy(() => import('./admin/Admin'))
-
 export default function App() {
   return (
     <Routes>
-      <Route path="admin" element={<Suspense fallback={null}><Admin /></Suspense>} />
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="products" element={<Products />} />

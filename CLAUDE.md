@@ -1,4 +1,4 @@
-# CLAUDE.md — bizsoft-site
+# CLAUDE.md — Smart Jigsaw website (public)
 
 เว็บไซต์องค์กรสำหรับบริษัทซอฟต์แวร์บริหารธุรกิจ (B2B) ภาษาไทย — React 18 + Vite 5 + TypeScript + react-router 6 + backend เล็กๆ (Express) สำหรับหน้าแอดมิน
 ดีไซน์อยู่ใน [DESIGN.md](DESIGN.md) · วิธีแก้เนื้อหา/เพิ่มหน้าอยู่ใน skill `.claude/skills/site-content/SKILL.md`
@@ -7,8 +7,7 @@
 - `npm run dev` — รันตอนพัฒนา (http://localhost:5173)
 - `npm run build` — ตรวจ type (`tsc --noEmit`) แล้ว build ไป `dist/` · ต้องผ่านก่อนส่งงานทุกครั้ง
 - `npm run preview` — เปิดดู build จริงที่ http://localhost:4173
-- `npm run server` — backend (พอร์ต 3001) · ตอน dev เปิดคู่กับ `npm run dev` (Vite proxy `/api` `/uploads` ให้เอง) · `npm start` = build แล้วเสิร์ฟทั้งเว็บ+backend ที่พอร์ตเดียว
-- แอดมินอยู่ที่ `/admin` · รหัสผ่านเริ่มต้นสุ่มและพิมพ์ใน terminal ครั้งแรก (หรือกำหนดด้วย env `ADMIN_PASSWORD` ก่อนรันครั้งแรก)
+- แอดมิน/backend อยู่ในโปรเจกต์ `smartjigsaw-admin` (ดู README ของโปรเจกต์นั้น)
 
 ## โครงสร้าง
 - `src/site.ts` — **แหล่งข้อมูลเดียวของเนื้อหา**: BRAND (ชื่อ/เบอร์/ที่อยู่), PRODUCTS, ARTICLES, SERVICES, COURSES, NAV, ฟังก์ชัน `thaiDate`
@@ -17,13 +16,12 @@
 - `src/pages/` — `Home`, `Products` (รายการ + รายละเอียด + `PageHead` ที่ใช้ร่วมกัน), `Knowledge` (รายการ + บทความ), `Others` (Services, Training, About, Contact, Account, NotFound)
 - `src/styles.css` — CSS ทั้งเว็บไฟล์เดียว ใช้ตัวแปรที่ `:root` (ดู DESIGN.md)
 
-## ระบบแอดมิน (CMS)
-- `server/index.mjs` — API: เนื้อหา (`/api/content`), อัปโหลดสื่อ (`/api/upload`, เก็บใน `data/uploads`), ล็อกอิน (cookie HttpOnly เซ็น HMAC), ข้อความจากฟอร์มติดต่อ · ข้อมูลทั้งหมดอยู่ใน `data/` (อยู่ใน .gitignore — **ต้อง backup**) ตั้งที่อื่นด้วย `DATA_DIR`
-- `src/admin/schema.ts` — นิยามฟอร์มแอดมินของแต่ละหมวด · `src/admin/Admin.tsx` — หน้าแอดมิน (โหลดแบบ lazy)
-- ค่าที่แอดมินแก้ถูกเก็บเป็น "ค่าทับ" แล้ว `applyOverrides()` ใน `src/site.ts` นำมาทับค่าเริ่มต้นตอนเปิดเว็บ (`main.tsx`) — ค่าเริ่มต้นใน site.ts ยังเป็นแหล่งข้อมูลตั้งต้น
-- **เพิ่มหมวดที่แก้ได้ใหม่:** export ใน site.ts + ใส่ใน `EDITABLE` + ใส่ใน `KEYS` ของ server + เพิ่ม Section ใน schema.ts
+## ระบบแอดมิน (CMS) — แยกเป็นโปรเจกต์ `smartjigsaw-admin`
+- หน้าแอดมินและ backend ย้ายไปอยู่โปรเจกต์ `../smartjigsaw-admin` (ใช้โดเมนแยก เช่น admin.smartjigsaw.com) — โปรเจกต์นี้เป็นเว็บสาธารณะแบบ static อย่างเดียว ไม่มี `/admin` และไม่มี server
+- ตอนเปิดเว็บ `main.tsx` ดึง `${API_BASE}/api/content` จากโดเมนแอดมิน แล้ว `applyOverrides()` ใน `src/site.ts` ทับค่าเริ่มต้น — ถ้า API ไม่ตอบ ใช้ค่าเริ่มต้นใน site.ts
+- ตั้ง `VITE_API_URL=https://admin.smartjigsaw.com` ตอน build (ไฟล์ที่อัปโหลด `/uploads/...` ถูกต่อโดเมนนี้ใน `safeUrl()` และฟอร์มติดต่อส่งไป `${API_BASE}/api/contact`) · ตอน `npm run dev` ไม่ตั้ง = ใช้ proxy ไปพอร์ต 3001
+- **เพิ่มหมวดที่แก้ได้ใหม่:** export ใน site.ts + ใส่ใน `EDITABLE` แล้วทำซ้ำในโปรเจกต์แอดมิน (คัดลอก site.ts + เพิ่มคีย์ใน `KEYS` ของ server + เพิ่ม Section ใน schema.ts)
 - ลิงก์/รูปจากข้อมูลต้องผ่าน `safeUrl()` / `cssUrl()` ก่อนใช้เสมอ (กัน `javascript:` ฯลฯ)
-- ข้อจำกัด: ไม่มีการแจ้งเตือนอีเมลเมื่อมีข้อความใหม่ · มีแอดมินคนเดียว (รหัสผ่านเดียว) · ไม่มีประวัติการแก้ไข/ย้อนกลับ · ใส่ HTTPS ที่ reverse proxy แล้วตั้ง `TRUST_PROXY=1`
 
 ## กติกาที่ต้องรักษา
 1. **เนื้อหาต้องมาจาก `src/site.ts`** (หรือค่าที่แอดมินทับ) — ห้ามฝังชื่อบริษัท เบอร์ ที่อยู่ ราคา ในหน้า/คอมโพเนนต์ ถ้ามีเนื้อหาใหม่ให้เพิ่มเป็นข้อมูลใน site.ts แล้ววนแสดง

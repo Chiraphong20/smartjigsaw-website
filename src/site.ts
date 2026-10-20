@@ -183,7 +183,12 @@ export function applyOverrides(all: Record<string, unknown>) {
 }
 
 // กันลิงก์/รูปที่แอดมินกรอกมาไม่ปลอดภัย (javascript: ฯลฯ) — ใช้กับทุก href และ url ที่มาจากข้อมูล
-export const safeUrl = (u?: string) => (u && /^(\/(?!\/)|https?:\/\/|tel:|mailto:)/.test(u) ? u : undefined)
+// หน้าแอดมินอยู่คนละโดเมน (VITE_API_URL) — ไฟล์ที่อัปโหลดจึงต้องโหลดจากโดเมนนั้น
+export const API_BASE = ((import.meta.env.VITE_API_URL as string | undefined) ?? '').replace(/\/$/, '')
+export const safeUrl = (u?: string) => {
+  if (!u || !/^(\/(?!\/)|https?:\/\/|tel:|mailto:)/.test(u)) return undefined
+  return u.startsWith('/uploads/') ? API_BASE + u : u
+}
 export const cssUrl = (u?: string) => { const s = safeUrl(u); return s ? `url("${encodeURI(s).replace(/"/g, '%22')}")` : undefined }
 
 export const thaiDate =(iso: string) => {

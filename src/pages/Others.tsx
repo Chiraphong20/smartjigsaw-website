@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
-import { BRAND, COMPANY, COURSES, PRODUCTS, SERVICES } from '../site'
+import { API_BASE, BRAND, COMPANY, COURSES, PRODUCTS, SERVICES } from '../site'
 import { PageHead } from './Products'
 
 export function NotFound() {
@@ -73,7 +73,7 @@ export function Contact() {
     const f = new FormData(e.currentTarget)
     setState('sending')
     try {
-      const r = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(f)) })
+      const r = await fetch(`${API_BASE}/api/contact`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.fromEntries(f)) })
       setState(r.ok ? 'sent' : 'error')
     } catch { setState('error') }
   }
