@@ -22,7 +22,7 @@ export default function VideoSection() {
           const color = product?.color ?? 'var(--ink)'
           const on = playing === id
           return (
-            <article key={id} className="video card">
+            <article key={id} data-edit={`VIDEOS:${id}`} className="video card">
               <div className="video-frame" style={{ background: `linear-gradient(125deg, ${color}, color-mix(in srgb, ${color} 55%, #0f1f3d))` }}>
                 {file ? (
                   <video src={file} controls preload="metadata" poster={safeUrl(v.thumb)} />

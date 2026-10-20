@@ -29,7 +29,7 @@ export default function Hero() {
       {HERO.map((s, idx) => {
         const img = cssUrl(s.image)
         return (
-          <div key={idx} className={`slide${idx === i % count ? ' on' : ''}`} aria-hidden={idx !== i % count}
+          <div key={idx} data-edit={`HERO:${idx}`} className={`slide${idx === i % count ? ' on' : ''}`} aria-hidden={idx !== i % count}
             style={{ background: `linear-gradient(125deg, ${s.color}, color-mix(in srgb, ${s.color} 55%, #0f1f3d))` }}>
             <div className="wrap">
               <div>

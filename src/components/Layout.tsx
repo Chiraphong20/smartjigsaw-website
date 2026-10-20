@@ -29,7 +29,7 @@ function Header() {
 
   return (
     <>
-      <div className="topbar">
+      <div className="topbar" data-edit="BRAND">
         <div className="wrap">
           <div className="row">
             {SOCIAL.some(s => safeUrl(s.href)) && <>
@@ -54,7 +54,7 @@ function Header() {
           <Link to="/" className="logo" aria-label={`${BRAND.name} หน้าแรก`}>
             <img className="logo-img" src="/images/logo.png" alt="" width={36} height={34} />{BRAND.name}
           </Link>
-          <nav className={`nav${open ? ' open' : ''}`} aria-label="เมนูหลัก">
+          <nav className={`nav${open ? ' open' : ''}`} aria-label="เมนูหลัก" data-edit="NAV">
             {NAV.map((item, n) => (
               <div key={n} className="nav-item">
                 <NavAnchor to={item.to} className="top">
@@ -98,7 +98,7 @@ function Footer() {
   const [cookie, setCookie] = useState(() => { try { return localStorage.getItem('cookie-ok') !== '1' } catch { return true } })
   return (
     <>
-      <footer className="footer">
+      <footer className="footer" data-edit="BRAND">
         <div className="wrap">
           <div className="cols">
             <div>

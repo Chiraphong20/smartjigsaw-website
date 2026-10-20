@@ -20,7 +20,7 @@ export default function AdBanner() {
 
   return (
     <div onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} aria-roledescription="carousel" aria-label="โปรโมชัน">
-      <div className="ad" style={{ background: bg ? `center / cover ${bg}` : `linear-gradient(120deg, ${ad.color}, color-mix(in srgb, ${ad.color} 50%, #0f1f3d))` }}>
+      <div className="ad" data-edit={`ADS:${i % ADS.length}`} style={{ background: bg ? `center / cover ${bg}` : `linear-gradient(120deg, ${ad.color}, color-mix(in srgb, ${ad.color} 50%, #0f1f3d))` }}>
         <div className="ad-body">
           <span className="tag" style={{ background: 'rgba(255,255,255,.18)', color: '#fff' }}>โปรโมชัน</span>
           <h2>{ad.title}</h2>

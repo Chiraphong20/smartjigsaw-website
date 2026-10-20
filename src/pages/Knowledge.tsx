@@ -25,7 +25,7 @@ export function Knowledge() {
           {list.length === 0 ? <p>ไม่พบบทความที่ตรงกับเงื่อนไข ลองเปลี่ยนหมวดหรือคำค้นหา</p> : (
             <div className="grid c3">
               {list.map(a => (
-                <Link key={a.slug} to={`/knowledge/${a.slug}`} className="card">
+                <Link key={a.slug} to={`/knowledge/${a.slug}`} className="card" data-edit={`ARTICLES:${ARTICLES.indexOf(a)}`}>
                   <div className="meta"><span className="tag">{a.category}</span>{thaiDate(a.date)}</div>
                   <h3>{a.title}</h3><p style={{ marginTop: 8 }}>{a.excerpt}</p>
                 </Link>
@@ -48,7 +48,7 @@ export function ArticlePage() {
       <PageHead title={a.title} crumbs={[{ label: 'ศูนย์ความรู้', to: '/knowledge' }, { label: a.category }]} />
       <section className="section">
         <div className="wrap two">
-          <article className="prose">
+          <article className="prose" data-edit={`ARTICLES:${ARTICLES.indexOf(a)}`}>
             <div className="meta"><span className="tag">{a.category}</span>{thaiDate(a.date)}</div>
             {a.body.map((p, i) => <p key={i}>{p}</p>)}
             <p><Link to="/contact" className="link-more">ปรึกษาทีมงานเรื่องนี้ →</Link></p>

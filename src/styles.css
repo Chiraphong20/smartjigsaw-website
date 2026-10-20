@@ -229,3 +229,8 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--p
 .program:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(15, 31, 61, 0.25); }
 @media (prefers-reduced-motion: reduce) { .program { transition: none; } .program:hover { transform: none; } }
 .footer .logo-img { filter: brightness(0) invert(1); }
+
+/* โหมดตัวอย่างในหน้าแอดมิน (?sj-preview=1): คลิกส่วนที่มี data-edit เพื่อไปแก้ที่ฟอร์ม */
+body.sj-preview [data-edit] { cursor: pointer; }
+body.sj-preview [data-edit]:hover { outline: 2px dashed var(--primary); outline-offset: -3px; }
+body.sj-preview .cookie { display: none; }

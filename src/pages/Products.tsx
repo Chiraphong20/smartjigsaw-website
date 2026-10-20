@@ -24,7 +24,7 @@ export function Products() {
           {PRODUCTS.map(p => {
             const Icon = p.icon
             return (
-              <Link key={p.slug} to={`/products/${p.slug}`} className="card" style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 18 }}>
+              <Link key={p.slug} to={`/products/${p.slug}`} className="card" data-edit={`PRODUCTS:${PRODUCTS.indexOf(p)}`} style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 18 }}>
                 <div className="ic" style={{ background: p.color, marginBottom: 0 }}><Icon size={24} /></div>
                 <div>
                   <h3>{p.name}</h3>
@@ -50,7 +50,7 @@ export function ProductDetail() {
     <>
       <PageHead title={p.name} lead={p.short} crumbs={[{ label: 'บริการ', to: '/products' }, { label: p.name }]} />
       <section className="section">
-        <div className="wrap two">
+        <div className="wrap two" data-edit={`PRODUCTS:${PRODUCTS.indexOf(p)}`}>
           <div>
             <div className="ic" style={{ background: p.color, width: 56, height: 56 }}><Icon size={28} /></div>
             <p className="prose" style={{ fontSize: '1.08rem' }}>{p.summary}</p>

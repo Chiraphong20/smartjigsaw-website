@@ -20,10 +20,10 @@ export default function Home() {
 
       <section className="section" id="programs">
         <div className="wrap">
-          <h2 className="programs-title">{HOME.programsTitle}</h2>
+          <h2 className="programs-title" data-edit="HOME">{HOME.programsTitle}</h2>
           <div className="programs">
-            {PRODUCTS.slice(0, 4).map(p => (
-              <Link key={p.slug} to={`/products/${p.slug}`} className="program"
+            {PRODUCTS.slice(0, 4).map((p, n) => (
+              <Link key={p.slug} to={`/products/${p.slug}`} className="program" data-edit={`PRODUCTS:${n}`}
                 style={{ background: `linear-gradient(135deg, ${p.color}, color-mix(in srgb, ${p.color} 70%, #fff))` }}>
                 <p.icon size={30} aria-hidden="true" />
                 <strong>{p.name}</strong>
@@ -37,7 +37,7 @@ export default function Home() {
       <section className="section" id="works">
         <div className="wrap">
           <div className="section-head">
-            <div><h2>{HOME.videosTitle}</h2><p>{HOME.videosText}</p></div>
+            <div data-edit="HOME"><h2>{HOME.videosTitle}</h2><p>{HOME.videosText}</p></div>
           </div>
           <VideoSection />
         </div>
@@ -47,7 +47,7 @@ export default function Home() {
         <div className="wrap"><AdBanner /></div>
       </section>
 
-      <section className="section" id="company">
+      <section className="section" id="company" data-edit="COMPANY">
         <div className="wrap two">
           <div>
             <span className="tag">{HOME.companyTag}</span>
@@ -67,11 +67,11 @@ export default function Home() {
       {CUSTOMERS.length > 0 && <section className="section alt" id="customers">
         <div className="wrap">
           <div className="section-head">
-            <div><h2>{HOME.customersTitle}</h2><p>{HOME.customersText}</p></div>
+            <div data-edit="HOME"><h2>{HOME.customersTitle}</h2><p>{HOME.customersText}</p></div>
             <Link to="/customers" className="link-more">ดูร้านลูกค้าทั้งหมด →</Link>
           </div>
           <ul className="logos">
-            {CUSTOMERS.map((c, i) => <li key={i}>{safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</li>)}
+            {CUSTOMERS.map((c, i) => <li key={i} data-edit={`CUSTOMERS:${i}`}>{safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</li>)}
           </ul>
         </div>
       </section>}
@@ -79,11 +79,11 @@ export default function Home() {
       {EVENTS.length > 0 && <section className="section" id="events">
         <div className="wrap">
           <div className="section-head">
-            <div><h2>{HOME.eventsTitle}</h2><p>{HOME.eventsText}</p></div>
+            <div data-edit="HOME"><h2>{HOME.eventsTitle}</h2><p>{HOME.eventsText}</p></div>
           </div>
           <div className="grid c3">
             {EVENTS.map((e, i) => (
-              <article key={i} className="card media">
+              <article key={i} data-edit={`EVENTS:${i}`} className="card media">
                 <Cover image={e.image} color={e.color} alt={e.title} />
                 <div className="media-body">
                   <div className="meta"><Calendar size={15} />{thaiDate(e.date)}<span>·</span><MapPin size={15} />{e.place}</div>
@@ -99,12 +99,12 @@ export default function Home() {
       {NEWS.length > 0 && <section className="section alt" id="news">
         <div className="wrap">
           <div className="section-head">
-            <div><h2>{HOME.newsTitle}</h2><p>{HOME.newsText}</p></div>
+            <div data-edit="HOME"><h2>{HOME.newsTitle}</h2><p>{HOME.newsText}</p></div>
             <Link to="/knowledge" className="link-more">ดูบทความทั้งหมด <ArrowRight size={16} /></Link>
           </div>
           <div className="grid c3">
             {NEWS.map((n, i) => (
-              <article key={i} className="card media">
+              <article key={i} data-edit={`NEWS:${i}`} className="card media">
                 <Cover image={n.image} color={n.color} alt={n.title} />
                 <div className="media-body">
                   <div className="meta"><span className="tag">{n.outlet}</span>{thaiDate(n.date)}</div>
@@ -119,7 +119,7 @@ export default function Home() {
 
       <section className="section" id="contact">
         <div className="wrap">
-          <div className="band">
+          <div className="band" data-edit="BRAND">
             <div>
               <h2>{HOME.contactTitle}</h2>
               <p>{HOME.contactText}</p>

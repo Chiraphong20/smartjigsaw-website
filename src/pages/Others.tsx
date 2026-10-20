@@ -19,7 +19,7 @@ export function Services() {
     <>
       <PageHead title="วิธีทำงานของเรา" lead="ค่านิยม 4 ข้อที่เรายึดถือในการทำงานกับลูกค้า" crumbs={[{ label: 'วิธีทำงาน' }]} />
       <section className="section"><div className="wrap grid c2">
-        {SERVICES.map(s => <div key={s.title} className="card"><h3>{s.title}</h3><p>{s.text}</p></div>)}
+        {SERVICES.map((s, n) => <div key={s.title} data-edit={`SERVICES:${n}`} className="card"><h3>{s.title}</h3><p>{s.text}</p></div>)}
       </div></section>
       <section className="section alt"><div className="wrap">
         <div className="band"><div><h2>อยากคุยกับทีมงาน?</h2><p>โทร {BRAND.servicePhone}{BRAND.line ? ` · ไลน์ ${BRAND.line}` : ''}{BRAND.hours ? ` · ${BRAND.hours}` : ''}</p></div>
@@ -35,8 +35,8 @@ export function Training() {
       <PageHead title="หลักสูตรอบรม" lead="เรียนรู้การใช้งานระบบกับวิทยากรที่ใช้งานจริง ทั้งห้องเรียนและ e-Learning" crumbs={[{ label: 'อบรม' }]} />
       <section className="section"><div className="wrap grid c2">
         {COURSES.length === 0 && <p>กำลังจัดทำหลักสูตร — ติดตามได้เร็วๆ นี้ หรือ<Link to="/contact" className="link-more">ติดต่อทีมงาน</Link></p>}
-        {COURSES.map(c => (
-          <div key={c.id} className="card">
+        {COURSES.map((c, n) => (
+          <div key={c.id} data-edit={`COURSES:${n}`} className="card">
             <div className="meta"><span className="tag">{c.level}</span>{c.hours} ชั่วโมง · {c.price}</div>
             <h3>{c.title}</h3>
             <ul className="check" style={{ marginTop: 12 }}>{c.topics.map(t => <li key={t}><span>• {t}</span></li>)}</ul>
@@ -53,7 +53,7 @@ export function About() {
     <>
       <PageHead title="เกี่ยวกับเรา" lead={BRAND.tagline} crumbs={[{ label: 'เกี่ยวกับเรา' }]} />
       <section className="section"><div className="wrap two">
-        <div className="prose">
+        <div className="prose" data-edit="COMPANY">
           <p>{COMPANY.text[0]}</p>
           <p>{COMPANY.text[1]}</p>
           <p>ค่านิยมของเรา: ความเรียบง่าย · ความจริงใจ · การลงมือทำจริง · ความยั่งยืน</p>
@@ -100,7 +100,7 @@ export function Contact() {
               <button className="btn primary" type="submit" disabled={state === 'sending'}>{state === 'sending' ? 'กำลังส่ง…' : 'ส่งข้อมูล'}</button>
             </>}
         </form>
-        <aside className="card" style={{ display: 'grid', gap: 16 }}>
+        <aside className="card" data-edit="BRAND" style={{ display: 'grid', gap: 16 }}>
           <div style={{ display: 'flex', gap: 12 }}><Phone size={19} /><div><b>โทร</b><br />{BRAND.salesPhone}{BRAND.servicePhone && BRAND.servicePhone !== BRAND.salesPhone && <><br /><span className="note">ฝ่ายบริการ {BRAND.servicePhone}</span></>}</div></div>
           {BRAND.email && <div style={{ display: 'flex', gap: 12 }}><Mail size={19} /><div><b>อีเมล</b><br />{BRAND.email}</div></div>}
           {BRAND.line && <div style={{ display: 'flex', gap: 12 }}><MessageCircle size={19} /><div><b>ไลน์</b><br />{BRAND.line}</div></div>}

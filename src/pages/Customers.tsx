@@ -13,7 +13,7 @@ export function Customers() {
           {CUSTOMERS.length === 0 && <p>กำลังรวบรวมรายชื่อลูกค้า — ติดตามได้เร็วๆ นี้</p>}
           <ul className="showcase">
             {featured.map((c, i) => (
-              <li key={i}>
+              <li key={i} data-edit={`CUSTOMERS:${CUSTOMERS.indexOf(c)}`}>
                 {safeUrl(c.image)
                   ? <img className="showcase-thumb" src={safeUrl(c.image)} alt={c.name} loading="lazy" />
                   : <div className="showcase-thumb" style={{ background: c.color }} aria-hidden="true">{c.name}</div>}

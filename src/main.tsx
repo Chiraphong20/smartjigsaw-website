@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import App from './App'
+import PreviewBridge from './components/PreviewBridge'
 import { API_BASE, applyOverrides } from './site'
 import './styles.css'
 
@@ -20,7 +20,7 @@ loadContent().then(() => {
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
       <BrowserRouter>
-        <App />
+        <PreviewBridge />
       </BrowserRouter>
     </React.StrictMode>,
   )
