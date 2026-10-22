@@ -1,0 +1,14 @@
+ตัวละครประจำแบรนด์ Smart Jigsaw (ทางเลือก — ใช้กับสินค้าที่ยังไม่มีมาสคอต เช่น Waejer, SyncZag)
+Gen ครั้งเดียวแล้วเก็บไว้เป็น "ภาพอ้างอิงตัวละคร" แนบทุกครั้งที่ Gen ฉากที่มีตัวละคร จะได้หน้าตาเหมือนกัน
+(เป็นตัวละครใหม่ของเรา ไม่ลอกมาสคอตของแบรนด์ใด)
+
+----- EN -----
+A cute 3D mascot character shaped like a friendly glossy blue jigsaw puzzle piece with a small knob on top,
+big round black glasses, a happy open smile, tiny arms and legs, wearing a small orange headset,
+soft clay-like material, studio lighting, white background, full body, front 3/4 view, high detail, no text, no logo.
+Color: blue #1369D5 body, navy #0B1E36 glasses frame, orange #FF9F2E accents.
+
+----- TH -----
+ตัวละครมาสคอต 3 มิติน่ารักรูปทรงเป็นชิ้นส่วนจิ๊กซอว์สีฟ้ามันเงา มีปุ่มเล็กๆ ด้านบน สวมแว่นกลมสีดำใหญ่ ยิ้มกว้าง
+มีแขนขาเล็กๆ สวมหูฟังไมค์สีส้มเล็กๆ วัสดุนุ่มคล้ายดินน้ำมัน แสงสตูดิโอ พื้นหลังขาว เห็นเต็มตัว มุมเฉียง 3/4 รายละเอียดสูง
+ไม่มีตัวหนังสือ ไม่มีโลโก้ สีตัว: ฟ้า #1369D5 กรอบแว่นกรมท่า #0B1E36 ไฮไลต์ส้ม #FF9F2E

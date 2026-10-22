@@ -1,0 +1,31 @@
+ชื่อ: Hero โปสเตอร์ — Yoonai — เช็กชื่อ/ลางานผ่าน LINE
+ใช้ที่: ธีม → รูปแบบ Hero = “โปสเตอร์เต็มกว้าง” แล้วอัปโหลดในหมวด Hero → (ภาพหลัก = ไฟล์ A · ภาพสำหรับมือถือ = ไฟล์ B)
+วิธีทำ: Gen ภาพ "ไม่มีตัวหนังสือ" (ไฟล์ A/B) → เติมหัวข้อ/โลโก้/ปุ่มในโปรแกรมออกแบบ (ดู ../_compose-guide.txt) → ส่งออกขนาดสุดท้าย
+
+######## A) ภาพเดสก์ท็อป — สัดส่วนตอน Gen 21:9 แล้วครอปบน-ล่างเป็น 2400×840 (ให้จุดเด่นอยู่กึ่งกลางแนวตั้ง) ########
+Bright, friendly product-marketing banner illustration in a polished 3D render style (soft glossy clay-like materials, soft studio lighting, subtle gradient background, small decorative dotted patterns and floating soft shapes).
+Layout (very important): ultra-wide banner, aspect ratio 21:9. The LEFT 48% of the frame is a calm, empty, light gradient area reserved for a big headline, subtitle and bullet text that will be added later in a design tool.
+The product scene sits on the RIGHT 52%, vertically centered, with some elements overlapping toward the middle.
+No text, no letters, no numbers, no logos, no watermark, no readable UI text (use abstract blocks and icons on screens).
+Background tone: pale sky-blue to white gradient (#DFF1FA to #FFFFFF) with navy (#131C45) and orange (#EC6F44) accents
+Scene: a smartphone with a green check-in tick on its screen (abstract), a floating calendar card with approved-leave marks, a small branch map pin, and the cute 3D brown owl mascot with round glasses waving beside the phone. Floating small badges with icons (clock, shield, LINE-style chat bubble).
+
+(Negative) text, letters, numbers, logo, watermark, dark gloomy background, cluttered left side, distorted hands, blurry
+
+######## B) ภาพมือถือ — สัดส่วน 9:10 ขนาดสุดท้าย 1080×1200 ########
+Scene: a smartphone with a green check-in tick on its screen (abstract), a floating calendar card with approved-leave marks, a small branch map pin, and the cute 3D brown owl mascot with round glasses waving beside the phone. Floating small badges with icons (clock, shield, LINE-style chat bubble).
+Background tone: pale sky-blue to white gradient (#DFF1FA to #FFFFFF) with navy (#131C45) and orange (#EC6F44) accents
+Same scene recomposed as a vertical 9:10 mobile banner: leave the TOP 38% empty light gradient for the headline text, put the product scene in the lower 62%, centered. No text, no letters, no logos, no watermark.
+
+(Negative) text, letters, numbers, logo, watermark, dark gloomy background, cluttered left side, distorted hands, blurry
+
+######## C) (ทางเลือก) ถ้าโปรแกรม Gen ของคุณเขียนตัวหนังสือไทยได้แม่น (เช่น Gemini/GPT-image) — ต่อท้ายข้อ A ด้วยบล็อกนี้ ########
+Add this exact Thai text in the empty left area, big bold rounded Thai sans-serif, dark teal/navy text, left-aligned:
+  Headline (very large): "Yoonai"
+  Subtitle (pill-shaped label): "เช็กชื่อ ลางาน ผ่าน LINE"
+  Bullets (small, with chevron icons):
+  - จัดกะและเช็กชื่อพนักงานทุกสาขา
+  - อนุมัติวันลาได้ทันที
+  - สรุปรายงานให้ HR อัตโนมัติ
+ตรวจตัวสะกดไทยทุกคำหลัง Gen — ถ้าผิดแม้ตัวเดียว ให้ใช้วิธีเติมข้อความเองในโปรแกรมออกแบบแทน
+(ข้อความข้างบนเป็นร่างโฆษณา เขียนจากสิ่งที่ระบบทำจริงตามเอกสารโปรเจกต์ — ตรวจและแก้ให้ตรงกับที่บริษัทจะสื่อก่อนใช้จริง)

@@ -17,6 +17,7 @@ export default function Hero() {
   const [i, setI] = useState(0)
   const [paused, setPaused] = useState(false)
   const count = HERO.length
+  const poster = THEME.heroStyle === 'poster' // แบบโปสเตอร์: แสดงภาพแบนเนอร์เต็มกว้าง (ข้อความอยู่ในภาพ) ไม่ครอป
   const banner = THEME.heroStyle === 'banner' // แบบแบนเนอร์: ภาพของสไลด์เป็นพื้นหลังเต็มจอ (ไม่ใช้กล่องภาพด้านขวา)
   useEffect(() => {
     if (paused || count < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -29,6 +30,24 @@ export default function Hero() {
     <section className="hero" aria-roledescription="carousel" aria-label="สินค้าเด่น" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       {HERO.map((s, idx) => {
         const img = cssUrl(s.image)
+        const on = idx === i % count
+        if (poster && safeUrl(s.image)) {
+          // โปสเตอร์: ภาพทั้งใบเป็นแบนเนอร์ (กดไปลิงก์ของปุ่มหลักได้) · หัวข้อ/คำอธิบายใส่ไว้แบบซ่อนเพื่อโปรแกรมอ่านหน้าจอและ SEO
+          const href = safeUrl(s.primaryTo)
+          const pic = (
+            <picture>
+              {safeUrl(s.imageMobile) && <source media="(max-width: 920px)" srcSet={safeUrl(s.imageMobile)} />}
+              <img src={safeUrl(s.image)} alt={s.title} loading={idx === 0 ? 'eager' : 'lazy'} />
+            </picture>
+          )
+          return (
+            <div key={idx} data-edit={`HERO:${idx}`} className={`slide poster${on ? ' on' : ''}`} aria-hidden={!on}>
+              {href ? (/^\//.test(href) ? <Link to={href} tabIndex={on ? 0 : -1} aria-label={`${s.title} — ${s.primaryLabel || 'ดูรายละเอียด'}`}>{pic}</Link> : <a href={href} tabIndex={on ? 0 : -1} aria-label={s.title}>{pic}</a>) : pic}
+              <h1 className="sr-only">{s.title}</h1>
+              <p className="sr-only">{s.lead}</p>
+            </div>
+          )
+        }
         return (
           <div key={idx} data-edit={`HERO:${idx}`} className={`slide${idx === i % count ? ' on' : ''}`} aria-hidden={idx !== i % count}
             style={{ background: banner && img

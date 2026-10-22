@@ -254,3 +254,13 @@ body.sj-preview .cookie { display: none; }
 :root[data-hero='banner'] .dots { left: clamp(16px, 4vw, 40px); right: auto; justify-content: flex-start; }
 :root[data-hero='banner'] .dots button[aria-current='true'] { background: var(--accent); }
 @media (prefers-reduced-motion: reduce) { .hero-arrow { transition: none; } }
+
+/* Hero แบบโปสเตอร์: ภาพแบนเนอร์เต็มกว้าง (ข้อความอยู่ในภาพ) */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.slide.poster { min-height: 0; background: none; }
+.slide.poster.on { display: block; }
+.slide.poster a, .slide.poster picture { display: block; }
+.slide.poster img { display: block; width: 100%; height: auto; }
+:root[data-hero='poster'] .dots { bottom: 10px; }
+:root[data-hero='poster'] .dots button { background: rgba(12, 18, 36, 0.35); }
+:root[data-hero='poster'] .dots button[aria-current='true'] { background: var(--accent); }
