@@ -1,0 +1,11 @@
+Title: ภาพปกผลงาน — Growstore
+Use in: หมวด วิดีโอแนะนำระบบ/ผลงาน → ภาพปกวิดีโอ (หรือ กิจกรรม/ข่าว → ภาพ)
+Aspect ratio to generate: 16:9
+Final size to upload: 1280 × 720 px · JPG/WebP
+Save as: thumb-growstore.webp
+
+===== PROMPT (copy this whole block) =====
+Isometric retail counter with a cute 3D brown owl mascot scanning a product, stock boxes and a mini sales chart floating above, navy background (#0c1330) with orange glow, soft glossy materials, no text, no logos, no watermark, 16:9.
+
+===== NEGATIVE PROMPT (if supported) =====
+text, letters, typography, logo, watermark, close-up human faces, cluttered, bright white background, low contrast, blurry, distorted hands

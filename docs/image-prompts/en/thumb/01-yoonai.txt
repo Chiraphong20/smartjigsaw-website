@@ -1,0 +1,11 @@
+Title: ภาพปกผลงาน — Yoonai
+Use in: หมวด วิดีโอแนะนำระบบ/ผลงาน → ภาพปกวิดีโอ (หรือ กิจกรรม/ข่าว → ภาพ)
+Aspect ratio to generate: 16:9
+Final size to upload: 1280 × 720 px · JPG/WebP
+Save as: thumb-yoonai.webp
+
+===== PROMPT (copy this whole block) =====
+Close-up isometric scene of a friendly 3D brown owl mascot approving a leave request on a floating tablet, with calendar and clock icons around it. Navy background (#0c1330), cyan-blue and orange accents, soft glossy clay-like materials, centered composition, no text, no logos, no watermark, 16:9.
+
+===== NEGATIVE PROMPT (if supported) =====
+text, letters, typography, logo, watermark, close-up human faces, cluttered, bright white background, low contrast, blurry, distorted hands

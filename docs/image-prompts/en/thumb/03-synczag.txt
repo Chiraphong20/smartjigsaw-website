@@ -1,0 +1,11 @@
+Title: ภาพปกผลงาน — SyncZag
+Use in: หมวด วิดีโอแนะนำระบบ/ผลงาน → ภาพปกวิดีโอ (หรือ กิจกรรม/ข่าว → ภาพ)
+Aspect ratio to generate: 16:9
+Final size to upload: 1280 × 720 px · JPG/WebP
+Save as: thumb-synczag.webp
+
+===== PROMPT (copy this whole block) =====
+Isometric kanban board with colorful task cards flowing between columns, a clock and a checklist, glowing orange sync arrows, dark navy background, soft glossy clay-like materials, no text, no logos, no watermark, 16:9.
+
+===== NEGATIVE PROMPT (if supported) =====
+text, letters, typography, logo, watermark, close-up human faces, cluttered, bright white background, low contrast, blurry, distorted hands

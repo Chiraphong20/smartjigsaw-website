@@ -1,0 +1,11 @@
+Title: ภาพเชิงสัญลักษณ์ของบริษัท (จิ๊กซอว์)
+Use in: หมวด Our Company → ภาพบริษัท/ทีมงาน
+Aspect ratio to generate: 16:9
+Final size to upload: 1280 × 720 px · JPG/WebP
+Save as: company-jigsaw.webp
+
+===== PROMPT (copy this whole block) =====
+Premium 3D illustration, 16:9. Four large glossy jigsaw puzzle pieces (blue, navy, light blue, orange) fitting together into one square, each piece carrying a simple glowing icon (people, gear, chart, code brackets). Dark navy background (#0c1330) with soft orange rim light, floating small cubes, centered composition, clean depth of field. No text, no logos, no human faces, no watermark.
+
+===== NEGATIVE PROMPT (if supported) =====
+text, letters, typography, logo, watermark, close-up human faces, cluttered, bright white background, low contrast, blurry, distorted hands

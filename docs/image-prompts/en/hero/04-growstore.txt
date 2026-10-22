@@ -1,0 +1,16 @@
+Title: Hero — Growstore (POS ร้านปลีก/ร้าน 20 บาท)
+Use in: หมวด Hero → ภาพประกอบ (สไลด์ Hero ที่เกี่ยวกับ Growstore / ERP & POS)
+Aspect ratio to generate: 21:9 (ใหญ่สุดที่ทำได้) แล้วครอปเป็น 2400×1000
+Final size to upload: 2400 × 1000 px · JPG/WebP ไม่เกิน ~400KB
+Save as: hero-growstore.webp
+
+===== PROMPT (copy this whole block) =====
+Premium 3D isometric illustration, soft glossy clay-like materials, cinematic lighting,
+dark navy background (#0c1330 to #20306f) with a warm orange (#ff9f2e) rim light and glow on the right side,
+depth of field, subtle floating particles, ultra clean, high detail, 21:9 wide banner.
+Composition: main subject placed center-right; the LEFT 45% and the BOTTOM-LEFT corner must be calm,
+empty dark navy space (reserved for headline text). No text, no letters, no logos, no watermark, no UI text.
+Scene: a cute 3D brown owl mascot as a cashier at a modern POS counter with a barcode scanner and a card/QR payment terminal, shelves of colorful products behind, a floating dashboard with rising bar charts, and a QR code icon. Blue (#2DA6DD) and warm yellow-orange accents on a dark navy backdrop. Mood: fast checkout, real-time stock, retail growth.
+
+===== NEGATIVE PROMPT (if supported) =====
+text, letters, typography, logo, watermark, close-up human faces, cluttered, bright white background, low contrast, blurry, distorted hands

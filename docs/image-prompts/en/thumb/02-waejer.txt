@@ -1,0 +1,11 @@
+Title: ภาพปกผลงาน — Waejer
+Use in: หมวด วิดีโอแนะนำระบบ/ผลงาน → ภาพปกวิดีโอ (หรือ กิจกรรม/ข่าว → ภาพ)
+Aspect ratio to generate: 16:9
+Final size to upload: 1280 × 720 px · JPG/WebP
+Save as: thumb-waejer.webp
+
+===== PROMPT (copy this whole block) =====
+Top-down isometric dark map with a white van following a curved glowing orange route through several store pins, a driver checking in with a smartphone. Navy tones, soft glossy materials, no text, no logos, no watermark, 16:9.
+
+===== NEGATIVE PROMPT (if supported) =====
+text, letters, typography, logo, watermark, close-up human faces, cluttered, bright white background, low contrast, blurry, distorted hands

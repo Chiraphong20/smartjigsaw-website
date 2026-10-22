@@ -1,0 +1,16 @@
+Title: Hero — SyncZag (Wong Workpath — โปรเจกต์ งาน นัดประชุม เอกสาร คลังรหัส)
+Use in: หมวด Hero → ภาพประกอบ (สไลด์ Hero ที่เกี่ยวกับ SyncZag)
+Aspect ratio to generate: 21:9 (ใหญ่สุดที่ทำได้) แล้วครอปเป็น 2400×1000
+Final size to upload: 2400 × 1000 px · JPG/WebP ไม่เกิน ~400KB
+Save as: hero-synczag.webp
+
+===== PROMPT (copy this whole block) =====
+Premium 3D isometric illustration, soft glossy clay-like materials, cinematic lighting,
+dark navy background (#0c1330 to #20306f) with a warm orange (#ff9f2e) rim light and glow on the right side,
+depth of field, subtle floating particles, ultra clean, high detail, 21:9 wide banner.
+Composition: main subject placed center-right; the LEFT 45% and the BOTTOM-LEFT corner must be calm,
+empty dark navy space (reserved for headline text). No text, no letters, no logos, no watermark, no UI text.
+Scene: a floating glassy kanban board with three columns of colorful task cards (no readable text), a calendar card with a meeting slot, a folder/document vault, and a small padlock key representing a password vault, all connected by thin glowing orange sync arrows in a loop. A tiny org-chart tree in the background. Orange (#ff6537) highlights over deep navy. Mood: organized, synced teamwork, internal workspace.
+
+===== NEGATIVE PROMPT (if supported) =====
+text, letters, typography, logo, watermark, close-up human faces, cluttered, bright white background, low contrast, blurry, distorted hands

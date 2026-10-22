@@ -1,0 +1,16 @@
+Title: Hero — Yoonai (TimeLine HR — เช็กชื่อ/ลางานผ่าน LINE)
+Use in: หมวด Hero → ภาพประกอบ (สไลด์ Hero สไลด์ที่เกี่ยวกับ Yoonai (หรือสไลด์ที่ 1))
+Aspect ratio to generate: 21:9 (ใหญ่สุดที่ทำได้) แล้วครอปเป็น 2400×1000
+Final size to upload: 2400 × 1000 px · JPG/WebP ไม่เกิน ~400KB
+Save as: hero-yoonai.webp
+
+===== PROMPT (copy this whole block) =====
+Premium 3D isometric illustration, soft glossy clay-like materials, cinematic lighting,
+dark navy background (#0c1330 to #20306f) with a warm orange (#ff9f2e) rim light and glow on the right side,
+depth of field, subtle floating particles, ultra clean, high detail, 21:9 wide banner.
+Composition: main subject placed center-right; the LEFT 45% and the BOTTOM-LEFT corner must be calm,
+empty dark navy space (reserved for headline text). No text, no letters, no logos, no watermark, no UI text.
+Scene: a friendly 3D brown owl mascot with big round glasses, wearing a small name badge, tapping a glowing smartphone that shows a green check-in tick, next to a floating calendar card with approved leave marks and a weekly shift timetable. A subtle map pin marks a branch. Cyan-blue (#2DA6DD) accents with orange highlights. Mood: calm, trustworthy, modern HR for Thai SMEs.
+
+===== NEGATIVE PROMPT (if supported) =====
+text, letters, typography, logo, watermark, close-up human faces, cluttered, bright white background, low contrast, blurry, distorted hands

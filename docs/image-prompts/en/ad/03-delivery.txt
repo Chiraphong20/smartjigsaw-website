@@ -1,0 +1,16 @@
+Title: แบนเนอร์โปรโมชัน — ติดตามการจัดส่งได้ทุกขั้นตอน
+Use in: หมวด พื้นที่โฆษณา/โปรโมชัน → ภาพพื้นหลัง (ข้อความขาว+ปุ่มจะวางทับครึ่งซ้าย)
+Aspect ratio to generate: 21:9 แล้วครอปบน-ล่างเป็น 2200×600 (วางจุดเด่นกึ่งกลางแนวตั้ง)
+Final size to upload: 2200 × 600 px · JPG/WebP
+Save as: ad-delivery.webp
+
+===== PROMPT (copy this whole block) =====
+Ultra-wide 3D isometric banner illustration, soft glossy clay-like materials, cinematic lighting,
+deep navy background (#0c1330 to #20306f), warm orange (#ff9f2e) glow, subtle floating particles.
+Composition: all subjects centered vertically and placed on the RIGHT 50% of the frame;
+the LEFT 50% is empty smooth dark navy gradient for headline text and a button.
+No text, no letters, no logos, no watermark.
+Scene: a delivery van following a glowing orange route on a dark map with 3 location pins and a parcel icon, plus a smartphone showing a map (no readable text).
+
+===== NEGATIVE PROMPT (if supported) =====
+text, letters, typography, logo, watermark, close-up human faces, cluttered, bright white background, low contrast, blurry, distorted hands

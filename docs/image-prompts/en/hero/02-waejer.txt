@@ -1,0 +1,16 @@
+Title: Hero — Waejer (Wae Jer Logistic — รถเร่/แวนเซลส์ + ติดตาม GPS)
+Use in: หมวด Hero → ภาพประกอบ (สไลด์ Hero ที่เกี่ยวกับ Waejer)
+Aspect ratio to generate: 21:9 (ใหญ่สุดที่ทำได้) แล้วครอปเป็น 2400×1000
+Final size to upload: 2400 × 1000 px · JPG/WebP ไม่เกิน ~400KB
+Save as: hero-waejer.webp
+
+===== PROMPT (copy this whole block) =====
+Premium 3D isometric illustration, soft glossy clay-like materials, cinematic lighting,
+dark navy background (#0c1330 to #20306f) with a warm orange (#ff9f2e) rim light and glow on the right side,
+depth of field, subtle floating particles, ultra clean, high detail, 21:9 wide banner.
+Composition: main subject placed center-right; the LEFT 45% and the BOTTOM-LEFT corner must be calm,
+empty dark navy space (reserved for headline text). No text, no letters, no logos, no watermark, no UI text.
+Scene: a white delivery van on a glowing route line over a stylized dark city map of a Thai provincial town, glowing location pins and checkpoints, small floating cards showing a receipt and a stock crate, a smartphone in the foreground showing a map screen (no readable text). Orange route glow (#ff9f2e) with a subtle green accent (#16a34a). Mood: real-time fleet tracking, daily sales route, reliable logistics.
+
+===== NEGATIVE PROMPT (if supported) =====
+text, letters, typography, logo, watermark, close-up human faces, cluttered, bright white background, low contrast, blurry, distorted hands
