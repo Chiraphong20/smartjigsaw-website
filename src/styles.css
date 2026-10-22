@@ -246,7 +246,8 @@ body.sj-preview .cookie { display: none; }
 .hero-arrow.prev { left: clamp(8px, 2vw, 28px); } .hero-arrow.next { right: clamp(8px, 2vw, 28px); }
 @media (max-width: 920px) { .hero-arrow { display: none; } }
 :root[data-hero='banner'] .slide { min-height: clamp(460px, 62vw, 640px); align-items: flex-end; }
-:root[data-hero='banner'] .slide::before { content: ''; position: absolute; inset: 0; background: radial-gradient(55% 75% at 88% 12%, color-mix(in srgb, var(--accent) 34%, transparent), transparent 62%), linear-gradient(90deg, rgba(12, 18, 36, 0.72), transparent 72%), linear-gradient(to top, rgba(12, 18, 36, 0.72), transparent 58%); pointer-events: none; }
+:root[data-hero='banner'] .slide::before { content: ''; position: absolute; inset: 0; background: radial-gradient(55% 75% at 88% 12%, color-mix(in srgb, var(--accent) 34%, transparent), transparent 62%), linear-gradient(90deg, rgba(12, 18, 36, 0.88), rgba(12, 18, 36, 0.5) 52%, transparent 82%), linear-gradient(to top, rgba(12, 18, 36, 0.8), transparent 60%); pointer-events: none; }
+:root[data-hero='banner'] .slide h1, :root[data-hero='banner'] .slide p.lead { text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5); }
 :root[data-hero='banner'] .slide .wrap { grid-template-columns: 1fr; padding-bottom: 76px; }
 :root[data-hero='banner'] .slide h1 { font-size: calc(clamp(2.2rem, 5.6vw, 4rem) * var(--head-scale, 1)); max-width: 20ch; }
 :root[data-hero='banner'] .art { display: none; }

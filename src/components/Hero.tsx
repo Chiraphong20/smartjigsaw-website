@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
-import { HERO, cssUrl, safeUrl } from '../site'
+import { HERO, THEME, cssUrl, safeUrl } from '../site'
 
 // เนื้อหาสไลด์มาจาก HERO ใน site.ts (แอดมินแก้ได้) — เลื่อนอัตโนมัติ 6 วิ (หยุดเมื่อเมาส์ชี้/ผู้ใช้ปิดแอนิเมชัน)
 function Cta({ to, className, label, tabIndex }: { to: string; className: string; label: string; tabIndex: number }) {
@@ -17,6 +17,7 @@ export default function Hero() {
   const [i, setI] = useState(0)
   const [paused, setPaused] = useState(false)
   const count = HERO.length
+  const banner = THEME.heroStyle === 'banner' // แบบแบนเนอร์: ภาพของสไลด์เป็นพื้นหลังเต็มจอ (ไม่ใช้กล่องภาพด้านขวา)
   useEffect(() => {
     if (paused || count < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const t = setInterval(() => setI(n => (n + 1) % count), 6000)
@@ -30,7 +31,9 @@ export default function Hero() {
         const img = cssUrl(s.image)
         return (
           <div key={idx} data-edit={`HERO:${idx}`} className={`slide${idx === i % count ? ' on' : ''}`} aria-hidden={idx !== i % count}
-            style={{ background: `linear-gradient(125deg, ${s.color}, color-mix(in srgb, ${s.color} 55%, #0f1f3d))` }}>
+            style={{ background: banner && img
+              ? `${img} 70% center / cover no-repeat, linear-gradient(125deg, ${s.color}, color-mix(in srgb, ${s.color} 55%, #0f1f3d))`
+              : `linear-gradient(125deg, ${s.color}, color-mix(in srgb, ${s.color} 55%, #0f1f3d))` }}>
             <div className="wrap">
               <div>
                 {s.tag && <span className="tag" style={{ background: 'rgba(255,255,255,.18)', color: '#fff' }}>{s.tag}</span>}
