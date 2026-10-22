@@ -3,7 +3,7 @@ import { ArrowRight, Calendar, Mail, MapPin, MessageCircle, Phone } from 'lucide
 import Hero from '../components/Hero'
 import VideoSection from '../components/VideoSection'
 import AdBanner from '../components/AdBanner'
-import { BRAND, COMPANY, PRODUCTS, CUSTOMERS, EVENTS, HOME, NEWS, safeUrl, thaiDate } from '../site'
+import { BRAND, COMPANY, PROGRAMS, CUSTOMERS, EVENTS, HOME, NEWS, safeUrl, thaiDate } from '../site'
 
 // ภาพประกอบ: ถ้ามีไฟล์ใน public/ ให้ใส่ path ที่ image ใน site.ts, ไม่มีจะใช้พื้นสีไล่เฉดแทน
 function Cover({ image, color, alt }: { image?: string; color: string; alt: string }) {
@@ -22,14 +22,20 @@ export default function Home() {
         <div className="wrap">
           <h2 className="programs-title" data-edit="HOME">{HOME.programsTitle}</h2>
           <div className="programs">
-            {PRODUCTS.slice(0, 4).map((p, n) => (
-              <Link key={p.slug} to={`/products/${p.slug}`} className="program" data-edit={`PRODUCTS:${n}`}
-                style={{ background: `linear-gradient(135deg, ${p.color}, color-mix(in srgb, ${p.color} 70%, #fff))` }}>
-                <p.icon size={30} aria-hidden="true" />
-                <strong>{p.name}</strong>
-                <span>{p.short}</span>
-              </Link>
-            ))}
+            {PROGRAMS.map((p, n) => {
+              const href = safeUrl(p.to) ?? '/contact'
+              const external = /^https?:\/\//.test(href)
+              const body = (
+                <>
+                  {safeUrl(p.logo) ? <img className="program-logo" src={safeUrl(p.logo)} alt={p.name} loading="lazy" /> : <strong>{p.name}</strong>}
+                  <span>{p.tagline}</span>
+                </>
+              )
+              const style = { background: `linear-gradient(135deg, ${p.color}, ${p.color2})` }
+              return external
+                ? <a key={n} href={href} target="_blank" rel="noopener noreferrer" className="program" data-edit={`PROGRAMS:${n}`} style={style}>{body}</a>
+                : <Link key={n} to={href} className="program" data-edit={`PROGRAMS:${n}`} style={style}>{body}</Link>
+            })}
           </div>
         </div>
       </section>
