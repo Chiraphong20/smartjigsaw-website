@@ -1,0 +1,31 @@
+ชื่อ: Hero โปสเตอร์ Smart Jigsaw — แบรนด์ Smart Jigsaw (สไลด์หลัก)
+ใช้ที่: ธีม → รูปแบบ Hero = “โปสเตอร์เต็มกว้าง” แล้วอัปโหลดในหมวด Hero → สไลด์ที่ตรงกัน (ภาพหลัก = ไฟล์ A · ภาพสำหรับมือถือ = ไฟล์ B)
+วิธีทำ: Gen ภาพ "ไม่มีตัวหนังสือ" (ไฟล์ A/B) → เติมหัวข้อ/โลโก้ Smart Jigsaw/ปุ่มในโปรแกรมออกแบบ (ดู ../hero-poster/_compose-guide.txt) → ส่งออก 2400×840 และ 1080×1200
+ตัวละครมาสคอตจิ๊กซอว์: ถ้าโปรแกรมรับภาพอ้างอิง ให้แนบภาพที่ Gen จาก ../hero-poster/_mascot-jigsaw.txt ก่อน เพื่อให้หน้าตาเหมือนกันทุกสไลด์
+
+######## A) ภาพเดสก์ท็อป — สัดส่วนตอน Gen 21:9 แล้วครอปบน-ล่างเป็น 2400×840 (ให้จุดเด่นอยู่กึ่งกลางแนวตั้ง) ########
+Bright, modern tech-brand banner illustration in a polished 3D render style (soft glossy clay-like materials, soft studio lighting, subtle white-to-light-blue gradient background, small decorative dotted patterns, floating soft cubes and thin glowing connection lines).
+Layout (very important): ultra-wide banner, aspect ratio 21:9. The LEFT 48% of the frame is a calm, empty, light gradient area reserved for a big headline, subtitle and bullet text that will be added later in a design tool.
+The scene sits on the RIGHT 52%, vertically centered, with some elements overlapping toward the middle.
+Brand colors: blue #1369D5, navy #0B1E36, light blue #5C9BEA, orange #FF9F2E accents.
+No text, no letters, no numbers, no logos, no watermark, no readable UI text (use abstract blocks and icons on screens).
+Scene: four large glossy jigsaw puzzle pieces (blue, navy, light blue, orange) interlocking into one square, each piece carrying a simple glowing icon (chat bubble with rising chart, shopping cart with POS screen, friendly AI robot face, code brackets in a window), thin glowing connection lines and small floating cubes around them.
+
+(Negative) text, letters, numbers, logo, watermark, dark gloomy background, cluttered left side, distorted hands, blurry
+
+######## B) ภาพมือถือ — สัดส่วน 9:10 ขนาดสุดท้าย 1080×1200 ########
+Scene: four large glossy jigsaw puzzle pieces (blue, navy, light blue, orange) interlocking into one square, each piece carrying a simple glowing icon (chat bubble with rising chart, shopping cart with POS screen, friendly AI robot face, code brackets in a window), thin glowing connection lines and small floating cubes around them.
+Same scene recomposed as a vertical 9:10 mobile banner: leave the TOP 38% empty light gradient for the headline text, put the scene in the lower 62%, centered. No text, no letters, no logos, no watermark.
+
+(Negative) text, letters, numbers, logo, watermark, dark gloomy background, cluttered left side, distorted hands, blurry
+
+######## C) (ทางเลือก) ใส่ตัวหนังสือไทยในภาพ — ต่อท้ายข้อ A เฉพาะโปรแกรมที่เขียนไทยแม่น ########
+Add this exact Thai text in the empty left area, big bold rounded Thai sans-serif, navy (#0B1E36) text, left-aligned:
+  Headline (very large): "SMART JIGSAW"
+  Subtitle (pill-shaped blue label with white text): "โซลูชันอัจฉริยะ เพื่ออนาคตที่ชาญฉลาดกว่า"
+  Bullets (small, with chevron icons):
+  - ที่ปรึกษาด้านธุรกิจและวางโครงสร้างระบบ
+  - ระบบ ERP & POS สำหรับแต่ละองค์กร
+  - AI Agent & Automation และซอฟต์แวร์เฉพาะทาง
+ตรวจตัวสะกดไทยทุกคำหลัง Gen — ถ้าผิดแม้ตัวเดียว ให้เติมข้อความเองในโปรแกรมออกแบบแทน
+(ข้อความข้างบนตรงกับข้อความสไลด์ Hero ที่อยู่ในเว็บตอนนี้ และคำบรรยายบริการจากเว็บเดิมของ Smart Jigsaw)
