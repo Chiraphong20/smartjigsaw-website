@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import PreviewBridge from './components/PreviewBridge'
-import { API_BASE, applyOverrides } from './site'
+import { API_BASE, applyOverrides, applyTheme } from './site'
 import './styles.css'
 
 // โหลดเนื้อหาที่แอดมินแก้จาก backend มาทับค่าเริ่มต้นก่อนแสดงผล — ถ้า backend ไม่ตอบ ใช้ค่าเริ่มต้นใน site.ts
@@ -17,6 +17,7 @@ async function loadContent() {
 }
 
 loadContent().then(() => {
+  applyTheme()
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
       <BrowserRouter>

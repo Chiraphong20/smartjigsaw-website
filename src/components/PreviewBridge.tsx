@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import App from '../App'
-import { API_BASE, applyOverride } from '../site'
+import { API_BASE, applyOverride, applyTheme } from '../site'
 
 // โหมดตัวอย่าง: หน้าเว็บนี้ถูกฝังใน iframe ของหน้าแอดมิน (?sj-preview=1) — รับ "ร่าง" ที่ผู้ดูแลกำลังพิมพ์มาแสดงทันที
 // และเมื่อคลิกส่วนที่มี data-edit จะบอกหน้าแอดมินให้เปิดฟอร์มของส่วนนั้น
@@ -22,7 +22,7 @@ export default function PreviewBridge() {
       if (e.origin !== ADMIN_ORIGIN || e.source !== window.parent) return
       const d = e.data
       if (!d || typeof d !== 'object') return
-      if (d.type === 'sj-preview' && typeof d.key === 'string' && d.value && typeof d.value === 'object') { applyOverride(d.key, d.value); rerender() }
+      if (d.type === 'sj-preview' && typeof d.key === 'string' && d.value && typeof d.value === 'object') { applyOverride(d.key, d.value); if (d.key === 'THEME') applyTheme(); rerender() }
       else if (d.type === 'sj-goto' && typeof d.path === 'string' && d.path.startsWith('/') && !d.path.startsWith('//')) navigate(d.path)
     }
     const onClick = (e: MouseEvent) => {

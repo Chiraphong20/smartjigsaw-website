@@ -51,7 +51,7 @@ export default function Home() {
         <div className="wrap two">
           <div>
             <span className="tag">{HOME.companyTag}</span>
-            <h2 style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)', marginTop: 12 }}>{COMPANY.heading}</h2>
+            <h2 style={{ fontSize: 'calc(clamp(1.4rem, 3vw, 2rem) * var(--head-scale, 1))', marginTop: 12 }}>{COMPANY.heading}</h2>
             <div className="prose" style={{ marginTop: 14 }}>{COMPANY.text.map((t, i) => <p key={i}>{t}</p>)}</div>
             <Link to="/about" className="link-more" style={{ marginTop: 18 }}>รู้จักเราเพิ่มเติม <ArrowRight size={16} /></Link>
           </div>
