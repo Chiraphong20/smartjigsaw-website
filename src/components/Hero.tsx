@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
 import { HERO, cssUrl, safeUrl } from '../site'
 
 // เนื้อหาสไลด์มาจาก HERO ใน site.ts (แอดมินแก้ได้) — เลื่อนอัตโนมัติ 6 วิ (หยุดเมื่อเมาส์ชี้/ผู้ใช้ปิดแอนิเมชัน)
@@ -50,6 +50,10 @@ export default function Hero() {
           </div>
         )
       })}
+      {count > 1 && <>
+        <button className="hero-arrow prev" aria-label="สไลด์ก่อนหน้า" onClick={() => setI(n => (n - 1 + count) % count)}><ChevronLeft size={22} /></button>
+        <button className="hero-arrow next" aria-label="สไลด์ถัดไป" onClick={() => setI(n => (n + 1) % count)}><ChevronRight size={22} /></button>
+      </>}
       <div className="dots">
         {HERO.map((_, idx) => <button key={idx} aria-label={`สไลด์ ${idx + 1}`} aria-current={idx === i % count} onClick={() => setI(idx)} />)}
       </div>
