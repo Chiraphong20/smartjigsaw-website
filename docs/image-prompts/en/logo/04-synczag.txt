@@ -1,0 +1,15 @@
+ชื่อ: โลโก้โปรแกรม — SyncZag (ขั้นที่ 1: Gen "สัญลักษณ์" อย่างเดียว)
+ใช้ที่: แอดมิน → โปรแกรมของเรา → รายการ SyncZag → ช่อง "โลโก้" (ปุ่มใต้ Hero หน้าแรก)
+สัดส่วนตอน Gen: 1:1 · ขั้นตอนต่อไป: ลบพื้นหลัง + ประกอบกับชื่อ (ตัวหนังสือ) แล้วส่งออก PNG พื้นโปร่ง 600 × 200 px (ดู ../_compose-guide.txt)
+ใช้สีขาวบนปุ่มแดง-ส้ม (#D93A22 → #FF6A3D)
+
+===== PROMPT (copy this whole block) =====
+A simple, bold, flat vector-style brand symbol (icon only), a single pure WHITE glyph centered on a perfectly flat solid red-orange (#D93A22) background (no gradient, no texture, no shadow, no glow).
+Thick rounded strokes and solid shapes so it stays readable when shrunk to 48px tall. Minimal, modern, friendly, geometric, generous empty margin around the symbol.
+Square 1:1 composition. No text, no letters, no numbers, no wordmark, no watermark.
+Concept: two thick arrows forming a zig-zag loop (a lightning-like 'Z' shape made of two sync arrows chasing each other). Single white glyph.
+
+===== Negative prompt =====
+text, letters, numbers, gradient, shadow, glow, 3D, photo, texture, thin lines, complex details, multiple colors, border, frame
+
+หมายเหตุ: สั่ง Gen 4–6 แบบ แล้วเลือกอันที่เรียบและอ่านชัดที่สุดเมื่อย่อเล็ก (ลองย่อเหลือสูง 48px ดู)
