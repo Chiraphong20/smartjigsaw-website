@@ -19,6 +19,7 @@ export default function Hero() {
   const [paused, setPaused] = useState(false)
   const count = HERO.length
   const poster = THEME.heroStyle === 'poster' // แบบโปสเตอร์: แสดงภาพแบนเนอร์เต็มกว้าง (ข้อความอยู่ในภาพ) ไม่ครอป
+  const heroBase = /^#[0-9a-f]{6}$/i.test(THEME.heroColor ?? '') ? THEME.heroColor : '' // สีพื้น Hero จากธีม (ถ้าตั้ง) ใช้แทนสีของแต่ละสไลด์
   const banner = THEME.heroStyle === 'banner' // แบบแบนเนอร์: ภาพของสไลด์เป็นพื้นหลังเต็มจอ (ไม่ใช้กล่องภาพด้านขวา)
   useEffect(() => {
     if (paused || IS_PREVIEW || count < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -57,7 +58,7 @@ export default function Hero() {
         }
         return (
           <div key={idx} data-edit={`HERO:${idx}`} className={`slide${idx === i % count ? ' on' : ''}${s.shade === 'off' ? ' no-shade' : ''}${banner && img && (s.fit ?? 'whole') === 'whole' ? ' whole' : ''}`} aria-hidden={idx !== i % count}
-            style={{ background: `linear-gradient(125deg, ${s.color}, color-mix(in srgb, ${s.color} 55%, #0f1f3d))` }}>
+            style={{ background: `linear-gradient(125deg, ${heroBase || s.color}, color-mix(in srgb, ${heroBase || s.color} 55%, #0f1f3d))` }}>
             {banner && img && (s.fit ?? 'whole') === 'whole' && (
               // แสดงทั้งภาพพอดีความกว้างจอ ความสูง Hero ตามสัดส่วนภาพ (ไม่ครอป) — ข้อความ/ปุ่มวางทับด้านล่างซ้าย
               <picture className="hero-whole" aria-hidden>
