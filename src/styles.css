@@ -277,3 +277,10 @@ body.sj-preview .cookie { display: none; }
 }
 :root[data-hero='banner'] .slide::before { z-index: 1; }
 :root[data-hero='banner'] .slide .wrap { z-index: 2; }
+
+/* Hero แบนเนอร์: แสดงทั้งภาพพอดีความกว้าง (สูงตามภาพ) / ความสูงคงที่แบบเห็นทั้งภาพ */
+.hero-bg.contain { background-size: contain; }
+:root[data-hero='banner'] .slide.whole { min-height: 0; }
+.slide.whole .hero-whole { display: block; width: 100%; position: relative; z-index: 0; }
+.slide.whole .hero-whole img { display: block; width: 100%; height: auto; }
+:root[data-hero='banner'] .slide.whole .wrap { position: absolute; inset: 0 0 0 0; margin-inline: auto; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: clamp(28px, 5vw, 64px); }

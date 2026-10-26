@@ -43,7 +43,7 @@ export default function Hero() {
           const href = safeUrl(s.primaryTo)
           const pic = (
             <picture>
-              {safeUrl(s.imageMobile) && <source media="(max-width: 920px)" srcSet={safeUrl(s.imageMobile)} />}
+              {safeUrl(s.imageMobile) && <source media="(max-width: 920px)" srcSet={encodeURI(safeUrl(s.imageMobile) ?? '')} />}
               <img src={safeUrl(s.image)} alt={s.title} loading={idx === 0 ? 'eager' : 'lazy'} />
             </picture>
           )
@@ -56,11 +56,18 @@ export default function Hero() {
           )
         }
         return (
-          <div key={idx} data-edit={`HERO:${idx}`} className={`slide${idx === i % count ? ' on' : ''}${s.shade === 'off' ? ' no-shade' : ''}`} aria-hidden={idx !== i % count}
+          <div key={idx} data-edit={`HERO:${idx}`} className={`slide${idx === i % count ? ' on' : ''}${s.shade === 'off' ? ' no-shade' : ''}${banner && img && (s.fit ?? 'whole') === 'whole' ? ' whole' : ''}`} aria-hidden={idx !== i % count}
             style={{ background: `linear-gradient(125deg, ${s.color}, color-mix(in srgb, ${s.color} 55%, #0f1f3d))` }}>
-            {banner && img && (
+            {banner && img && (s.fit ?? 'whole') === 'whole' && (
+              // แสดงทั้งภาพพอดีความกว้างจอ ความสูง Hero ตามสัดส่วนภาพ (ไม่ครอป) — ข้อความ/ปุ่มวางทับด้านล่างซ้าย
+              <picture className="hero-whole" aria-hidden>
+                {safeUrl(s.imageMobile) && <source media="(max-width: 920px)" srcSet={encodeURI(safeUrl(s.imageMobile) ?? '')} />}
+                <img src={safeUrl(s.image)} alt="" loading={idx === 0 ? 'eager' : 'lazy'} />
+              </picture>
+            )}
+            {banner && img && (s.fit ?? 'whole') !== 'whole' && (
               // ภาพพื้นหลังแบบปรับได้: ซูม/จุดโฟกัสแยกเดสก์ท็อป-มือถือ (ไม่ใส่ = เต็มกรอบ จุดโฟกัสเดสก์ท็อป 70%,50% มือถือ 50%,50%)
-              <div className="hero-bg" aria-hidden style={{
+              <div className={`hero-bg${s.fit === 'contain' ? ' contain' : ''}`} aria-hidden style={{
                 '--bg-d': img,
                 ...(safeUrl(s.imageMobile) ? { '--bg-m': cssUrl(s.imageMobile) } : {}),
                 '--hz': (s.imageZoom ?? 100) / 100, '--hx': `${s.imageX ?? 70}%`, '--hy': `${s.imageY ?? 50}%`,
