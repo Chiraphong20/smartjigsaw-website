@@ -265,3 +265,7 @@ body.sj-preview .cookie { display: none; }
 :root[data-hero='poster'] .dots { bottom: 10px; }
 :root[data-hero='poster'] .dots button { background: rgba(12, 18, 36, 0.35); }
 :root[data-hero='poster'] .dots button[aria-current='true'] { background: var(--accent); }
+
+/* ปิดเงาทึบทับภาพ Hero (ตั้งต่อสไลด์ในแอดมิน) */
+:root[data-hero='banner'] .slide.no-shade::before { background: none; }
+:root[data-hero='banner'] .slide.no-shade h1, :root[data-hero='banner'] .slide.no-shade p.lead { text-shadow: none; }

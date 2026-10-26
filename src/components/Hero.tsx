@@ -49,7 +49,7 @@ export default function Hero() {
           )
         }
         return (
-          <div key={idx} data-edit={`HERO:${idx}`} className={`slide${idx === i % count ? ' on' : ''}`} aria-hidden={idx !== i % count}
+          <div key={idx} data-edit={`HERO:${idx}`} className={`slide${idx === i % count ? ' on' : ''}${s.shade === 'off' ? ' no-shade' : ''}`} aria-hidden={idx !== i % count}
             style={{ background: banner && img
               ? `${img} 70% center / cover no-repeat, linear-gradient(125deg, ${s.color}, color-mix(in srgb, ${s.color} 55%, #0f1f3d))`
               : `linear-gradient(125deg, ${s.color}, color-mix(in srgb, ${s.color} 55%, #0f1f3d))` }}>
