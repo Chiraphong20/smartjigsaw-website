@@ -55,13 +55,22 @@ export default function Hero() {
               : `linear-gradient(125deg, ${s.color}, color-mix(in srgb, ${s.color} 55%, #0f1f3d))` }}>
             <div className="wrap">
               <div>
-                {s.tag && <span className="tag" style={{ background: 'rgba(255,255,255,.18)', color: '#fff' }}>{s.tag}</span>}
-                <h1 style={{ marginTop: 14 }}>{s.title}</h1>
-                <p className="lead">{s.lead}</p>
-                <div className="actions">
-                  {s.primaryLabel && <Cta className="btn accent" to={s.primaryTo} label={s.primaryLabel} tabIndex={idx === i % count ? 0 : -1} />}
-                  {s.secondaryLabel && <Cta className="btn ghost" to={s.secondaryTo} label={s.secondaryLabel} tabIndex={idx === i % count ? 0 : -1} />}
-                </div>
+                {(() => {
+                  const hideTxt = s.overlayText === 'hide' // ซ่อนข้อความบนสไลด์ (ภาพมีข้อความอยู่แล้ว) แต่ยังคงไว้ให้โปรแกรมอ่านหน้าจอ/SEO
+                  return (
+                    <>
+                      {s.tag && <span className={hideTxt ? 'sr-only' : 'tag'} style={hideTxt ? undefined : { background: 'rgba(255,255,255,.18)', color: '#fff' }}>{s.tag}</span>}
+                      <h1 className={hideTxt ? 'sr-only' : undefined} style={hideTxt ? undefined : { marginTop: 14 }}>{s.title}</h1>
+                      <p className={hideTxt ? 'sr-only' : 'lead'}>{s.lead}</p>
+                    </>
+                  )
+                })()}
+                {s.buttons !== 'hide' && (
+                  <div className="actions">
+                    {s.primaryLabel && <Cta className="btn accent" to={s.primaryTo} label={s.primaryLabel} tabIndex={idx === i % count ? 0 : -1} />}
+                    {s.secondaryLabel && <Cta className="btn ghost" to={s.secondaryTo} label={s.secondaryLabel} tabIndex={idx === i % count ? 0 : -1} />}
+                  </div>
+                )}
               </div>
               <div className="art" aria-hidden style={img ? { backgroundImage: img } : undefined} data-image={img ? '1' : undefined}>
                 {!img && <Sparkles />}
