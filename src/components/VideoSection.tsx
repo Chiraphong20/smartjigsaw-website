@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Play } from 'lucide-react'
 import Pager from './Pager'
 import { PRODUCTS, VIDEOS, safeUrl } from '../site'
@@ -8,6 +8,12 @@ const PER_PAGE = 3
 export default function VideoSection() {
   const [page, setPage] = useState(0)
   const [playing, setPlaying] = useState<number | null>(null)
+  // โหมดตัวอย่าง: แอดมินสั่งให้เปิดหน้าที่มีวิดีโอที่กำลังแก้อยู่
+  useEffect(() => {
+    const go = (e: Event) => setPage(Math.floor((e as CustomEvent<number>).detail / PER_PAGE))
+    window.addEventListener('sj-video-goto', go)
+    return () => window.removeEventListener('sj-video-goto', go)
+  }, [])
   const pages = Math.ceil(VIDEOS.length / PER_PAGE)
   const items = VIDEOS.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE)
 

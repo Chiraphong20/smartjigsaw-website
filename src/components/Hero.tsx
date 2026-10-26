@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
 import { HERO, THEME, cssUrl, safeUrl } from '../site'
+import { IS_PREVIEW } from '../previewFlag'
 
 // เนื้อหาสไลด์มาจาก HERO ใน site.ts (แอดมินแก้ได้) — เลื่อนอัตโนมัติ 6 วิ (หยุดเมื่อเมาส์ชี้/ผู้ใช้ปิดแอนิเมชัน)
 function Cta({ to, className, label, tabIndex }: { to: string; className: string; label: string; tabIndex: number }) {
@@ -20,10 +21,16 @@ export default function Hero() {
   const poster = THEME.heroStyle === 'poster' // แบบโปสเตอร์: แสดงภาพแบนเนอร์เต็มกว้าง (ข้อความอยู่ในภาพ) ไม่ครอป
   const banner = THEME.heroStyle === 'banner' // แบบแบนเนอร์: ภาพของสไลด์เป็นพื้นหลังเต็มจอ (ไม่ใช้กล่องภาพด้านขวา)
   useEffect(() => {
-    if (paused || count < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (paused || IS_PREVIEW || count < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const t = setInterval(() => setI(n => (n + 1) % count), 6000)
     return () => clearInterval(t)
   }, [paused, count])
+  // โหมดตัวอย่าง: แอดมินสั่งให้แสดงสไลด์ที่กำลังแก้อยู่
+  useEffect(() => {
+    const go = (e: Event) => setI((e as CustomEvent<number>).detail)
+    window.addEventListener('sj-hero-goto', go)
+    return () => window.removeEventListener('sj-hero-goto', go)
+  }, [])
   if (!count) return null
 
   return (
