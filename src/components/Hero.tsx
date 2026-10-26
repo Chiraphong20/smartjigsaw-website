@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
 import { HERO, THEME, cssUrl, safeUrl } from '../site'
@@ -50,9 +50,16 @@ export default function Hero() {
         }
         return (
           <div key={idx} data-edit={`HERO:${idx}`} className={`slide${idx === i % count ? ' on' : ''}${s.shade === 'off' ? ' no-shade' : ''}`} aria-hidden={idx !== i % count}
-            style={{ background: banner && img
-              ? `${img} 70% center / cover no-repeat, linear-gradient(125deg, ${s.color}, color-mix(in srgb, ${s.color} 55%, #0f1f3d))`
-              : `linear-gradient(125deg, ${s.color}, color-mix(in srgb, ${s.color} 55%, #0f1f3d))` }}>
+            style={{ background: `linear-gradient(125deg, ${s.color}, color-mix(in srgb, ${s.color} 55%, #0f1f3d))` }}>
+            {banner && img && (
+              // ภาพพื้นหลังแบบปรับได้: ซูม/จุดโฟกัสแยกเดสก์ท็อป-มือถือ (ไม่ใส่ = เต็มกรอบ จุดโฟกัสเดสก์ท็อป 70%,50% มือถือ 50%,50%)
+              <div className="hero-bg" aria-hidden style={{
+                '--bg-d': img,
+                ...(safeUrl(s.imageMobile) ? { '--bg-m': cssUrl(s.imageMobile) } : {}),
+                '--hz': (s.imageZoom ?? 100) / 100, '--hx': `${s.imageX ?? 70}%`, '--hy': `${s.imageY ?? 50}%`,
+                '--mz': (s.mobileZoom ?? 100) / 100, '--mx': `${s.mobileX ?? 50}%`, '--my': `${s.mobileY ?? 50}%`,
+              } as React.CSSProperties} />
+            )}
             <div className="wrap">
               <div>
                 {(() => {

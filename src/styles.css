@@ -269,3 +269,11 @@ body.sj-preview .cookie { display: none; }
 /* ปิดเงาทึบทับภาพ Hero (ตั้งต่อสไลด์ในแอดมิน) */
 :root[data-hero='banner'] .slide.no-shade::before { background: none; }
 :root[data-hero='banner'] .slide.no-shade h1, :root[data-hero='banner'] .slide.no-shade p.lead { text-shadow: none; }
+
+/* ภาพพื้นหลัง Hero แบบแบนเนอร์ที่ปรับซูม/จุดโฟกัสได้ (เดสก์ท็อปและมือถือแยกกัน) */
+.hero-bg { position: absolute; inset: 0; z-index: 0; background-image: var(--bg-d); background-repeat: no-repeat; background-size: cover; background-position: var(--hx, 70%) var(--hy, 50%); transform: scale(var(--hz, 1)); transform-origin: var(--hx, 70%) var(--hy, 50%); }
+@media (max-width: 920px) {
+  .hero-bg { background-image: var(--bg-m, var(--bg-d)); background-position: var(--mx, 50%) var(--my, 50%); transform: scale(var(--mz, 1)); transform-origin: var(--mx, 50%) var(--my, 50%); }
+}
+:root[data-hero='banner'] .slide::before { z-index: 1; }
+:root[data-hero='banner'] .slide .wrap { z-index: 2; }
