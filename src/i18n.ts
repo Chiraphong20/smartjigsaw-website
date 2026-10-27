@@ -117,6 +117,7 @@ const EN: Record<string, string> = {
   'กดเพื่อโหลดจาก': 'Click to load from',
   '(จะมีการเชื่อมต่อกับแพลตฟอร์มนั้น)': '(this connects to that platform)',
   'เปิดโพสต์ต้นฉบับบน': 'Open the original post on',
+  'ดูโพสต์/รายละเอียดเพิ่มเติม': 'View the post / read more',
   'โพสต์จาก': 'Post from',
   'เลื่อนดูคอนเทนต์โซเชียล': 'Browse social content',
   'เล่นวิดีโอ': 'Play video',

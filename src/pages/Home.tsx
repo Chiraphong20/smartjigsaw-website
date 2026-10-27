@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Award, Calendar, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { ArrowRight, Award, Calendar, ExternalLink, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import Hero from '../components/Hero'
 import VideoSection from '../components/VideoSection'
 import SocialFeed from '../components/SocialFeed'
@@ -96,6 +96,7 @@ export default function Home() {
                     <h3>{a.title}</h3>
                     {(a.issuer || a.year) && <span className="tag">{[a.issuer, a.year].filter(Boolean).join(' · ')}</span>}
                     {a.text && <p>{a.text}</p>}
+                    {href && <span className="link-more">{t('ดูโพสต์/รายละเอียดเพิ่มเติม')} <ExternalLink size={15} aria-hidden="true" /></span>}
                   </>
                 )
                 return (
