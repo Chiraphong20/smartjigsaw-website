@@ -336,3 +336,11 @@ body.sj-preview .cookie { display: none; }
 .award-badge img { width: 100%; max-height: 260px; object-fit: contain; border-radius: var(--radius, 8px); }
 .awards h3 { margin-bottom: 8px; }
 .awards .tag { display: inline-block; margin-bottom: 8px; }
+
+/* แบนเนอร์โปรโมชันที่มีภาพ: แสดงภาพเต็มใบ ไม่ครอป (ความสูงตามสัดส่วนภาพ) */
+.ad.has-img { position: relative; display: block; padding: 0; min-height: 0; overflow: hidden; }
+.ad-img { display: block; width: 100%; height: auto; }
+.ad.has-img .ad-body { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: clamp(24px, 5vw, 56px); }
+@media (max-width: 700px) {
+  .ad.has-img .ad-body { position: static; max-width: none; padding: 20px; }
+}

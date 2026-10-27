@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import Pager from './Pager'
-import { ADS, cssUrl, safeUrl } from '../site'
+import { ADS, safeUrl } from '../site'
 import { IS_PREVIEW } from '../previewFlag'
 import { t } from '../i18n'
 
@@ -22,17 +22,18 @@ export default function AdBanner() {
   }, [])
   if (!ADS.length) return null
   const ad = ADS[i % ADS.length]
-  const bg = cssUrl(ad.image)
+  const src = safeUrl(ad.image)
   const to = safeUrl(ad.to)
 
   return (
     <div onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} aria-roledescription="carousel" aria-label={t('โปรโมชัน')}>
-      <div className="ad" data-edit={`ADS:${i % ADS.length}`} style={{ background: bg ? `center / cover ${bg}` : `linear-gradient(120deg, ${ad.color}, color-mix(in srgb, ${ad.color} 50%, #0f1f3d))` }}>
+      <div className={ad.image && src ? 'ad has-img' : 'ad'} data-edit={`ADS:${i % ADS.length}`} style={{ background: `linear-gradient(120deg, ${ad.color}, color-mix(in srgb, ${ad.color} 50%, #0f1f3d))` }}>
+        {src && <img className="ad-img" src={src} alt="" />}
         <div className="ad-body">
           <span className="tag" style={{ background: 'rgba(255,255,255,.18)', color: '#fff' }}>{t('โปรโมชัน')}</span>
           <h2>{ad.title}</h2>
           <p>{ad.text}</p>
-          {to && (/^\//.test(to) ? <Link className="btn accent" to={to}>{ad.cta} <ArrowRight size={17} /></Link> : <a className="btn accent" href={to}>{ad.cta} <ArrowRight size={17} /></a>)}
+          {to && ad.button !== 'hide' && (/^\//.test(to) ? <Link className="btn accent" to={to}>{ad.cta} <ArrowRight size={17} /></Link> : <a className="btn accent" href={to}>{ad.cta} <ArrowRight size={17} /></a>)}
         </div>
       </div>
       <Pager page={i % ADS.length} pages={ADS.length} onChange={setI} label={t('เลื่อนดูโปรโมชัน')} />
