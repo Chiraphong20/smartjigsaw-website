@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
-import { API_BASE, BRAND, COMPANY, COURSES, PRODUCTS, SERVICES } from '../site'
+import { API_BASE, BRAND, COMPANY, COURSES, PRODUCTS, SERVICES, HOME, TEAM, safeUrl } from '../site'
 import { PageHead } from './Products'
 
 export function NotFound() {
@@ -62,6 +62,25 @@ export function About() {
           {COMPANY.stats.map((s, i) => <div key={i} className="stat"><b>{s.n}</b><span>{s.label}</span></div>)}
         </div>
       </div></section>
+      {TEAM.length > 0 && (
+        <section className="section alt" id="team">
+          <div className="wrap">
+            <div className="section-head"><div data-edit="HOME"><h2>{HOME.teamTitle}</h2><p>{HOME.teamText}</p></div></div>
+            <ul className="team">
+              {TEAM.map((m, i) => (
+                <li key={i} data-edit={`TEAM:${i}`} className="card">
+                  {safeUrl(m.photo)
+                    ? <img className="team-photo" src={safeUrl(m.photo)} alt={m.name} loading="lazy" />
+                    : <div className="team-photo" style={{ background: m.color || 'var(--primary)' }} aria-hidden="true">{m.name.trim().slice(0, 1)}</div>}
+                  <h3>{m.name}</h3>
+                  <span className="tag">{m.role}</span>
+                  {m.text && <p>{m.text}</p>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
     </>
   )
 }

@@ -5,7 +5,7 @@ import { API_BASE, applyOverride, applyTheme } from '../site'
 import { IS_PREVIEW } from '../previewFlag'
 
 // หมวดที่แก้ → หน้าที่ต้องเปิดดู (ใช้ตอนแอดมินส่ง sj-view)
-const ROUTE: Record<string, string> = { HERO: '/', PROGRAMS: '/', VIDEOS: '/', SOCIAL_POSTS: '/', ADS: '/', COMPANY: '/', CUSTOMERS: '/', EVENTS: '/', NEWS: '/', HOME: '/', PRODUCTS: '/products', ARTICLES: '/knowledge', SERVICES: '/services', COURSES: '/training' }
+const ROUTE: Record<string, string> = { HERO: '/', PROGRAMS: '/', VIDEOS: '/', TEAM: '/about', SOCIAL_POSTS: '/', ADS: '/', COMPANY: '/', CUSTOMERS: '/', EVENTS: '/', NEWS: '/', HOME: '/', PRODUCTS: '/products', ARTICLES: '/knowledge', SERVICES: '/services', COURSES: '/training' }
 
 // โหมดตัวอย่าง: หน้าเว็บนี้ถูกฝังใน iframe ของหน้าแอดมิน (?sj-preview=1) — รับ "ร่าง" ที่ผู้ดูแลกำลังพิมพ์มาแสดงทันที
 // และเมื่อคลิกส่วนที่มี data-edit จะบอกหน้าแอดมินให้เปิดฟอร์มของส่วนนั้น

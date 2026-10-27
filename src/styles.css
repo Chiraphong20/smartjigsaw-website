@@ -295,3 +295,10 @@ body.sj-preview .cookie { display: none; }
 .feed-load .play { width: 52px; height: 52px; border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; }
 .feed-load small { font-size: 0.78rem; opacity: 0.9; max-width: 26ch; }
 .feed-badge { font-weight: 600; background: rgba(255, 255, 255, 0.18); padding: 6px 14px; border-radius: 99px; }
+
+/* ทีมผู้พัฒนา */
+.team { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; }
+.team li { text-align: center; }
+.team-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 14px; display: grid; place-items: center; color: #fff; font-family: var(--font-head); font-size: 2.6rem; font-weight: 600; }
+.team h3 { margin-bottom: 6px; }
+.team .tag { display: inline-block; margin-bottom: 8px; }
