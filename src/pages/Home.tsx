@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Calendar, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import Hero from '../components/Hero'
 import VideoSection from '../components/VideoSection'
+import SocialFeed from '../components/SocialFeed'
 import AdBanner from '../components/AdBanner'
-import { BRAND, COMPANY, PROGRAMS, CUSTOMERS, EVENTS, HOME, NEWS, safeUrl, thaiDate } from '../site'
+import { BRAND, COMPANY, PROGRAMS, CUSTOMERS, EVENTS, HOME, NEWS, SOCIAL_POSTS, safeUrl, thaiDate } from '../site'
 
 // ภาพประกอบ: ถ้ามีไฟล์ใน public/ ให้ใส่ path ที่ image ใน site.ts, ไม่มีจะใช้พื้นสีไล่เฉดแทน
 function Cover({ image, color, alt }: { image?: string; color: string; alt: string }) {
@@ -48,6 +49,17 @@ export default function Home() {
           <VideoSection />
         </div>
       </section>
+
+      {SOCIAL_POSTS.length > 0 && (
+        <section className="section alt" id="social">
+          <div className="wrap">
+            <div className="section-head">
+              <div data-edit="HOME"><h2>{HOME.socialTitle}</h2><p>{HOME.socialText}</p></div>
+            </div>
+            <SocialFeed />
+          </div>
+        </section>
+      )}
 
       <section className="section alt">
         <div className="wrap"><AdBanner /></div>

@@ -5,7 +5,7 @@ import { API_BASE, applyOverride, applyTheme } from '../site'
 import { IS_PREVIEW } from '../previewFlag'
 
 // หมวดที่แก้ → หน้าที่ต้องเปิดดู (ใช้ตอนแอดมินส่ง sj-view)
-const ROUTE: Record<string, string> = { HERO: '/', PROGRAMS: '/', VIDEOS: '/', ADS: '/', COMPANY: '/', CUSTOMERS: '/', EVENTS: '/', NEWS: '/', HOME: '/', PRODUCTS: '/products', ARTICLES: '/knowledge', SERVICES: '/services', COURSES: '/training' }
+const ROUTE: Record<string, string> = { HERO: '/', PROGRAMS: '/', VIDEOS: '/', SOCIAL_POSTS: '/', ADS: '/', COMPANY: '/', CUSTOMERS: '/', EVENTS: '/', NEWS: '/', HOME: '/', PRODUCTS: '/products', ARTICLES: '/knowledge', SERVICES: '/services', COURSES: '/training' }
 
 // โหมดตัวอย่าง: หน้าเว็บนี้ถูกฝังใน iframe ของหน้าแอดมิน (?sj-preview=1) — รับ "ร่าง" ที่ผู้ดูแลกำลังพิมพ์มาแสดงทันที
 // และเมื่อคลิกส่วนที่มี data-edit จะบอกหน้าแอดมินให้เปิดฟอร์มของส่วนนั้น
@@ -33,6 +33,7 @@ export default function PreviewBridge() {
         if (route && window.location.pathname !== route) navigate(route)
         if (d.key === 'HERO' && idx !== null) window.dispatchEvent(new CustomEvent('sj-hero-goto', { detail: idx }))
         if (d.key === 'ADS' && idx !== null) window.dispatchEvent(new CustomEvent('sj-ad-goto', { detail: idx }))
+        if (d.key === 'SOCIAL_POSTS' && idx !== null) window.dispatchEvent(new CustomEvent('sj-social-goto', { detail: idx }))
         if (d.key === 'VIDEOS' && idx !== null) window.dispatchEvent(new CustomEvent('sj-video-goto', { detail: idx }))
         let tries = 0
         const timer = window.setInterval(() => {
