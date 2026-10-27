@@ -3,7 +3,7 @@ import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-do
 import { ChevronDown, ChevronRight, ExternalLink, LogIn, Mail, MapPin, Menu, Phone, Search, X } from 'lucide-react'
 import { BRAND, NAV, PRODUCTS, SOCIAL, safeUrl } from '../site'
 
-const LANGS = ['TH', 'EN', '中文', '日本語']
+const LANGS = ['TH', 'EN']
 
 // ลิงก์เมนู: https:// = เว็บอื่น (แท็บใหม่) · ว่าง = หัวข้อที่กดไม่ได้ · นอกนั้นเป็นลิงก์ภายใน (รองรับ #หัวข้อ)
 function NavAnchor({ to, className, children }: { to: string; className?: string; children: ReactNode }) {
