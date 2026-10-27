@@ -19,6 +19,7 @@ function embedOf(platform: string, raw: string): { src: string; ratio: string } 
     return /^[\w-]{6,20}$/.test(id) ? { src: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`, ratio: path.startsWith('/shorts') ? '9 / 16' : '16 / 9' } : null
   }
   if (platform === 'facebook' && (host === 'facebook.com' || host === 'fb.watch')) {
+    if (/^\/share\//.test(path)) return null // ลิงก์แชร์ (facebook.com/share/…) ฝังไม่ได้ — ให้ใช้ลิงก์จริงของโพสต์
     const video = /\/(videos?|reel|watch)\b/.test(path) || host === 'fb.watch'
     const href = encodeURIComponent(raw)
     return video
