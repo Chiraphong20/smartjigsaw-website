@@ -309,3 +309,8 @@ body.sj-preview .cookie { display: none; }
   .nav { gap: 0; }
   .nav a.top, .nav span.top { padding: 9px 9px; font-size: 0.94rem; }
 }
+
+/* ปุ่มเลือกภาษา: ธงชาติ + รหัสภาษา */
+.lang button { display: inline-flex; align-items: center; gap: 5px; }
+.lang .flag { width: 18px; height: 12px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35); flex: none; }
+.lang button[aria-pressed='false'] .flag { opacity: 0.7; }

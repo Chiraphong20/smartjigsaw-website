@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import App from '../App'
 import { API_BASE, applyOverride, applyTheme } from '../site'
 import { IS_PREVIEW } from '../previewFlag'
+import { contentChanged, onLangChange } from '../i18n'
 
 // หมวดที่แก้ → หน้าที่ต้องเปิดดู (ใช้ตอนแอดมินส่ง sj-view)
 const ROUTE: Record<string, string> = { HERO: '/', PROGRAMS: '/', VIDEOS: '/', TEAM: '/about', SOCIAL_POSTS: '/', ADS: '/', COMPANY: '/', CUSTOMERS: '/', EVENTS: '/', NEWS: '/', HOME: '/', PRODUCTS: '/products', ARTICLES: '/knowledge', SERVICES: '/services', COURSES: '/training' }
@@ -17,6 +18,7 @@ export default function PreviewBridge() {
   const loc = useLocation()
   const navigate = useNavigate()
   const active = IS_PREVIEW && !!ADMIN_ORIGIN
+  useEffect(() => onLangChange(rerender), [])
 
   useEffect(() => {
     if (!active) return
@@ -25,7 +27,7 @@ export default function PreviewBridge() {
       if (e.origin !== ADMIN_ORIGIN || e.source !== window.parent) return
       const d = e.data
       if (!d || typeof d !== 'object') return
-      if (d.type === 'sj-preview' && typeof d.key === 'string' && d.value && typeof d.value === 'object') { applyOverride(d.key, d.value); if (d.key === 'THEME') applyTheme(); rerender() }
+      if (d.type === 'sj-preview' && typeof d.key === 'string' && d.value && typeof d.value === 'object') { applyOverride(d.key, d.value); contentChanged(d.key); if (d.key === 'THEME') applyTheme(); rerender() }
       else if (d.type === 'sj-view' && typeof d.key === 'string') {
         // ล็อกตัวอย่างไปที่ส่วนที่กำลังแก้: เปิดหน้าที่เกี่ยวข้อง สลับสไลด์ที่แก้อยู่ แล้วเลื่อนไปที่ส่วนนั้น (เลื่อนเฉพาะในกรอบตัวอย่าง)
         const route = ROUTE[d.key]

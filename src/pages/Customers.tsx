@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom'
 import { CUSTOMERS, HOME, safeUrl } from '../site'
 import { PageHead } from './Products'
+import { t, getLang } from '../i18n'
 
 export function Customers() {
   const featured = CUSTOMERS.filter(c => c.text || c.image)
   const others = CUSTOMERS.filter(c => !(c.text || c.image))
   return (
     <>
-      <PageHead title="ลูกค้าของเรา" lead={HOME.customersText} crumbs={[{ label: 'ลูกค้าของเรา' }]} />
+      <PageHead title={t('ลูกค้าของเรา')} lead={HOME.customersText} crumbs={[{ label: t('ลูกค้าของเรา') }]} />
       <section className="section">
         <div className="wrap">
-          {CUSTOMERS.length === 0 && <p>กำลังรวบรวมรายชื่อลูกค้า — ติดตามได้เร็วๆ นี้</p>}
+          {CUSTOMERS.length === 0 && <p>{t('กำลังรวบรวมรายชื่อลูกค้า — ติดตามได้เร็วๆ นี้')}</p>}
           <ul className="showcase">
             {featured.map((c, i) => (
               <li key={i} data-edit={`CUSTOMERS:${CUSTOMERS.indexOf(c)}`}>
@@ -21,7 +22,7 @@ export function Customers() {
                   <h3>{c.name}{c.place ? ` ${c.place}` : ''}</h3>
                   {c.text && <p>{c.text}</p>}
                   {c.systems && <p style={{ marginTop: 8 }}>{c.systems.split(',').map(x => x.trim()).filter(Boolean).map(x => <span key={x} className="tag" style={{ marginRight: 6 }}>{x}</span>)}</p>}
-                  {safeUrl(c.url) && <a href={safeUrl(c.url)} target="_blank" rel="noopener noreferrer" className="link-more" style={{ marginTop: 8 }}>เยี่ยมชมเว็บไซต์ของร้าน →</a>}
+                  {safeUrl(c.url) && <a href={safeUrl(c.url)} target="_blank" rel="noopener noreferrer" className="link-more" style={{ marginTop: 8 }}>{t('เยี่ยมชมเว็บไซต์ของร้าน →')}</a>}
                 </div>
               </li>
             ))}
@@ -31,7 +32,7 @@ export function Customers() {
               {others.map((c, i) => <li key={i}>{safeUrl(c.url) ? <a href={safeUrl(c.url)} target="_blank" rel="noopener noreferrer">{safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</a> : safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</li>)}
             </ul>
           )}
-          <p style={{ marginTop: 32 }}><Link to="/contact" className="btn primary">ขอใบเสนอราคา</Link></p>
+          <p style={{ marginTop: 32 }}><Link to="/contact" className="btn primary">{t('ขอใบเสนอราคา')}</Link></p>
         </div>
       </section>
     </>

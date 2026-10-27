@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
 import { HERO, THEME, cssUrl, safeUrl } from '../site'
 import { IS_PREVIEW } from '../previewFlag'
+import { t } from '../i18n'
 
 // เนื้อหาสไลด์มาจาก HERO ใน site.ts (แอดมินแก้ได้) — เลื่อนอัตโนมัติ 6 วิ (หยุดเมื่อเมาส์ชี้/ผู้ใช้ปิดแอนิเมชัน)
 function Cta({ to, className, label, tabIndex }: { to: string; className: string; label: string; tabIndex: number }) {
@@ -35,7 +36,7 @@ export default function Hero() {
   if (!count) return null
 
   return (
-    <section className="hero" aria-roledescription="carousel" aria-label="สินค้าเด่น" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+    <section className="hero" aria-roledescription="carousel" aria-label={t('สินค้าเด่น')} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       {HERO.map((s, idx) => {
         const img = cssUrl(s.image)
         const on = idx === i % count
@@ -50,7 +51,7 @@ export default function Hero() {
           )
           return (
             <div key={idx} data-edit={`HERO:${idx}`} className={`slide poster${on ? ' on' : ''}`} aria-hidden={!on}>
-              {href ? (/^\//.test(href) ? <Link to={href} tabIndex={on ? 0 : -1} aria-label={`${s.title} — ${s.primaryLabel || 'ดูรายละเอียด'}`}>{pic}</Link> : <a href={href} tabIndex={on ? 0 : -1} aria-label={s.title}>{pic}</a>) : pic}
+              {href ? (/^\//.test(href) ? <Link to={href} tabIndex={on ? 0 : -1} aria-label={`${s.title} — ${s.primaryLabel || t('ดูรายละเอียด')}`}>{pic}</Link> : <a href={href} tabIndex={on ? 0 : -1} aria-label={s.title}>{pic}</a>) : pic}
               <h1 className="sr-only">{s.title}</h1>
               <p className="sr-only">{s.lead}</p>
             </div>
@@ -104,11 +105,11 @@ export default function Hero() {
         )
       })}
       {count > 1 && <>
-        <button className="hero-arrow prev" aria-label="สไลด์ก่อนหน้า" onClick={() => setI(n => (n - 1 + count) % count)}><ChevronLeft size={22} /></button>
-        <button className="hero-arrow next" aria-label="สไลด์ถัดไป" onClick={() => setI(n => (n + 1) % count)}><ChevronRight size={22} /></button>
+        <button className="hero-arrow prev" aria-label={t('สไลด์ก่อนหน้า')} onClick={() => setI(n => (n - 1 + count) % count)}><ChevronLeft size={22} /></button>
+        <button className="hero-arrow next" aria-label={t('สไลด์ถัดไป')} onClick={() => setI(n => (n + 1) % count)}><ChevronRight size={22} /></button>
       </>}
       <div className="dots">
-        {HERO.map((_, idx) => <button key={idx} aria-label={`สไลด์ ${idx + 1}`} aria-current={idx === i % count} onClick={() => setI(idx)} />)}
+        {HERO.map((_, idx) => <button key={idx} aria-label={`${t('สไลด์')} ${idx + 1}`} aria-current={idx === i % count} onClick={() => setI(idx)} />)}
       </div>
     </section>
   )

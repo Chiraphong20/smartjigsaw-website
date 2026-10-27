@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Play } from 'lucide-react'
 import Pager from './Pager'
 import { PRODUCTS, VIDEOS, safeUrl } from '../site'
+import { t } from '../i18n'
 
 const PER_PAGE = 3
 
@@ -35,20 +36,20 @@ export default function VideoSection() {
                 ) : on && yt ? (
                   <iframe src={`https://www.youtube-nocookie.com/embed/${yt}?autoplay=1`} title={v.title} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen />
                 ) : yt ? (
-                  <button className="play" aria-label={`เล่นวิดีโอ ${v.title}`} onClick={() => setPlaying(id)}><Play size={26} /></button>
+                  <button className="play" aria-label={`${t('เล่นวิดีโอ')} ${v.title}`} onClick={() => setPlaying(id)}><Play size={26} /></button>
                 ) : (
-                  <span className="soon">เร็วๆ นี้</span>
+                  <span className="soon">{t('เร็วๆ นี้')}</span>
                 )}
                 {v.duration && !file && <span className="duration">{v.duration}</span>}
               </div>
-              <div className="meta" style={{ marginTop: 14 }}><span className="tag">{product?.name ?? 'ทั่วไป'}</span></div>
+              <div className="meta" style={{ marginTop: 14 }}><span className="tag">{product?.name ?? t('ทั่วไป')}</span></div>
               <h3>{v.title}</h3>
               <p>{v.text}</p>
             </article>
           )
         })}
       </div>
-      <Pager page={page} pages={pages} onChange={p => { setPage(p); setPlaying(null) }} label="เลื่อนดูวิดีโอ" />
+      <Pager page={page} pages={pages} onChange={p => { setPage(p); setPlaying(null) }} label={t('เลื่อนดูวิดีโอ')} />
     </>
   )
 }

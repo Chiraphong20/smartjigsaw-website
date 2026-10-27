@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import PreviewBridge from './components/PreviewBridge'
 import { API_BASE, applyOverrides, applyTheme } from './site'
+import { IS_PREVIEW } from './previewFlag'
+import { applyLang, initialLang } from './i18n'
 import './styles.css'
 
 // โหลดเนื้อหาที่แอดมินแก้จาก backend มาทับค่าเริ่มต้นก่อนแสดงผล — ถ้า backend ไม่ตอบ ใช้ค่าเริ่มต้นใน site.ts
@@ -18,6 +20,8 @@ async function loadContent() {
 
 loadContent().then(() => {
   applyTheme()
+  // โหมดตัวอย่างในแอดมินแสดงภาษาไทย (ภาษาที่แก้ไข) เว้นแต่ระบุ ?lang= มา
+  applyLang(IS_PREVIEW && !new URLSearchParams(window.location.search).has('lang') ? 'th' : initialLang())
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
       <BrowserRouter>

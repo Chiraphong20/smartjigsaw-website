@@ -5,6 +5,7 @@ import VideoSection from '../components/VideoSection'
 import SocialFeed from '../components/SocialFeed'
 import AdBanner from '../components/AdBanner'
 import { BRAND, COMPANY, PROGRAMS, CUSTOMERS, EVENTS, HOME, NEWS, SOCIAL_POSTS, safeUrl, thaiDate } from '../site'
+import { t, getLang } from '../i18n'
 
 // ภาพประกอบ: ถ้ามีไฟล์ใน public/ ให้ใส่ path ที่ image ใน site.ts, ไม่มีจะใช้พื้นสีไล่เฉดแทน
 function Cover({ image, color, alt }: { image?: string; color: string; alt: string }) {
@@ -71,10 +72,10 @@ export default function Home() {
             <span className="tag">{HOME.companyTag}</span>
             <h2 style={{ fontSize: 'calc(clamp(1.4rem, 3vw, 2rem) * var(--head-scale, 1))', marginTop: 12 }}>{COMPANY.heading}</h2>
             <div className="prose" style={{ marginTop: 14 }}>{COMPANY.text.map((t, i) => <p key={i}>{t}</p>)}</div>
-            <Link to="/about" className="link-more" style={{ marginTop: 18 }}>รู้จักเราเพิ่มเติม <ArrowRight size={16} /></Link>
+            <Link to="/about" className="link-more" style={{ marginTop: 18 }}>{t('รู้จักเราเพิ่มเติม')} <ArrowRight size={16} /></Link>
           </div>
           <div>
-            <Cover image={COMPANY.image} color="#1369D5" alt="ทีมงานของเรา" />
+            <Cover image={COMPANY.image} color="#1369D5" alt={t('ทีมงานของเรา')} />
             <div className="stats" style={{ marginTop: 20 }}>
               {COMPANY.stats.map((s, i) => <div key={i} className="stat"><b>{s.n}</b><span>{s.label}</span></div>)}
             </div>
@@ -86,7 +87,7 @@ export default function Home() {
         <div className="wrap">
           <div className="section-head">
             <div data-edit="HOME"><h2>{HOME.customersTitle}</h2><p>{HOME.customersText}</p></div>
-            <Link to="/customers" className="link-more">ดูร้านลูกค้าทั้งหมด →</Link>
+            <Link to="/customers" className="link-more">{t('ดูร้านลูกค้าทั้งหมด →')}</Link>
           </div>
           <ul className="logos">
             {CUSTOMERS.map((c, i) => <li key={i} data-edit={`CUSTOMERS:${i}`}>{safeUrl(c.url) ? <a href={safeUrl(c.url)} target="_blank" rel="noopener noreferrer">{safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</a> : safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</li>)}
@@ -118,7 +119,7 @@ export default function Home() {
         <div className="wrap">
           <div className="section-head">
             <div data-edit="HOME"><h2>{HOME.newsTitle}</h2><p>{HOME.newsText}</p></div>
-            <Link to="/knowledge" className="link-more">ดูบทความทั้งหมด <ArrowRight size={16} /></Link>
+            <Link to="/knowledge" className="link-more">{t('ดูบทความทั้งหมด')} <ArrowRight size={16} /></Link>
           </div>
           <div className="grid c3">
             {NEWS.map((n, i) => (
@@ -149,8 +150,8 @@ export default function Home() {
               </ul>
             </div>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <Link to="/contact" className="btn accent">ขอคำปรึกษา</Link>
-              <a href={`tel:${BRAND.salesPhone.replace(/-/g, '')}`} className="btn ghost" style={{ background: 'rgba(255,255,255,.14)', color: '#fff', borderColor: 'rgba(255,255,255,.35)' }}>โทร {BRAND.salesPhone}</a>
+              <Link to="/contact" className="btn accent">{t('ขอคำปรึกษา')}</Link>
+              <a href={`tel:${BRAND.salesPhone.replace(/-/g, '')}`} className="btn ghost" style={{ background: 'rgba(255,255,255,.14)', color: '#fff', borderColor: 'rgba(255,255,255,.35)' }}>{t('โทร')} {BRAND.salesPhone}</a>
             </div>
           </div>
         </div>

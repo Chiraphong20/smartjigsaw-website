@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { ExternalLink, Play } from 'lucide-react'
 import Pager from './Pager'
 import { SOCIAL_POSTS, cssUrl, safeUrl, thaiDate } from '../site'
+import { t } from '../i18n'
 
 const PER_PAGE = 3
 const PLATFORM: Record<string, string> = { facebook: 'Facebook', instagram: 'Instagram', tiktok: 'TikTok', youtube: 'YouTube', other: 'โซเชียล' }
@@ -54,18 +55,18 @@ export default function SocialFeed() {
           const id = page * PER_PAGE + n
           const href = safeUrl(p.url)
           const emb = href && p.show !== 'card' ? embedOf(p.platform, href) : null
-          const name = PLATFORM[p.platform] ?? PLATFORM.other
+          const name = p.platform === 'other' || !PLATFORM[p.platform] ? t('โซเชียล') : PLATFORM[p.platform]
           const cover = cssUrl(p.cover)
           return (
             <article key={id} data-edit={`SOCIAL_POSTS:${id}`} className="feed card">
               <div className="feed-frame" style={{ aspectRatio: emb ? emb.ratio : '16 / 9', background: cover ? `${cover} center / cover` : 'linear-gradient(125deg, var(--ink), var(--primary))' }}>
                 {emb && loaded === id ? (
-                  <iframe src={emb.src} title={p.title || `โพสต์จาก ${name}`} loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; clipboard-write" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
+                  <iframe src={emb.src} title={p.title || `${t('โพสต์จาก')} ${name}`} loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; clipboard-write" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
                 ) : emb ? (
                   <button className="feed-load" onClick={() => setLoaded(id)}>
                     <span className="play"><Play size={22} /></span>
-                    <b>ดูโพสต์ {name}</b>
-                    <small>กดเพื่อโหลดจาก {name} (จะมีการเชื่อมต่อกับแพลตฟอร์มนั้น)</small>
+                    <b>{t('ดูโพสต์')} {name}</b>
+                    <small>{t('กดเพื่อโหลดจาก')} {name} {t('(จะมีการเชื่อมต่อกับแพลตฟอร์มนั้น)')}</small>
                   </button>
                 ) : (
                   <span className="feed-badge">{name}</span>
@@ -76,12 +77,12 @@ export default function SocialFeed() {
               </div>
               {p.title && <h3>{p.title}</h3>}
               {p.text && <p>{p.text}</p>}
-              {href && <a href={href} target="_blank" rel="noopener noreferrer" className="link-more">เปิดโพสต์ต้นฉบับบน {name} <ExternalLink size={15} /></a>}
+              {href && <a href={href} target="_blank" rel="noopener noreferrer" className="link-more">{t('เปิดโพสต์ต้นฉบับบน')} {name} <ExternalLink size={15} /></a>}
             </article>
           )
         })}
       </div>
-      <Pager page={page} pages={pages} onChange={p => { setPage(p); setLoaded(null) }} label="เลื่อนดูคอนเทนต์โซเชียล" />
+      <Pager page={page} pages={pages} onChange={p => { setPage(p); setLoaded(null) }} label={t('เลื่อนดูคอนเทนต์โซเชียล')} />
     </>
   )
 }
