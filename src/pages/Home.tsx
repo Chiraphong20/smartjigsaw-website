@@ -89,7 +89,7 @@ export default function Home() {
             <Link to="/customers" className="link-more">ดูร้านลูกค้าทั้งหมด →</Link>
           </div>
           <ul className="logos">
-            {CUSTOMERS.map((c, i) => <li key={i} data-edit={`CUSTOMERS:${i}`}>{safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</li>)}
+            {CUSTOMERS.map((c, i) => <li key={i} data-edit={`CUSTOMERS:${i}`}>{safeUrl(c.url) ? <a href={safeUrl(c.url)} target="_blank" rel="noopener noreferrer">{safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</a> : safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</li>)}
           </ul>
         </div>
       </section>}

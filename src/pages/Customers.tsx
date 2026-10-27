@@ -20,13 +20,15 @@ export function Customers() {
                 <div>
                   <h3>{c.name}{c.place ? ` ${c.place}` : ''}</h3>
                   {c.text && <p>{c.text}</p>}
+                  {c.systems && <p style={{ marginTop: 8 }}>{c.systems.split(',').map(x => x.trim()).filter(Boolean).map(x => <span key={x} className="tag" style={{ marginRight: 6 }}>{x}</span>)}</p>}
+                  {safeUrl(c.url) && <a href={safeUrl(c.url)} target="_blank" rel="noopener noreferrer" className="link-more" style={{ marginTop: 8 }}>เยี่ยมชมเว็บไซต์ของร้าน →</a>}
                 </div>
               </li>
             ))}
           </ul>
           {others.length > 0 && (
             <ul className="logos" style={{ marginTop: 40 }}>
-              {others.map((c, i) => <li key={i}>{safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</li>)}
+              {others.map((c, i) => <li key={i}>{safeUrl(c.url) ? <a href={safeUrl(c.url)} target="_blank" rel="noopener noreferrer">{safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</a> : safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</li>)}
             </ul>
           )}
           <p style={{ marginTop: 32 }}><Link to="/contact" className="btn primary">ขอใบเสนอราคา</Link></p>
