@@ -331,6 +331,7 @@ body.sj-preview .cookie { display: none; }
 .awards li { text-align: center; }
 .award-link { display: block; color: inherit; }
 .award-badge { height: 96px; display: grid; place-items: center; margin-bottom: 12px; color: var(--primary); }
-.award-badge img { max-height: 96px; max-width: 80%; object-fit: contain; }
+.award-badge:has(img) { height: auto; margin-bottom: 16px; }
+.award-badge img { width: 100%; max-height: 260px; object-fit: contain; border-radius: var(--radius, 8px); }
 .awards h3 { margin-bottom: 8px; }
 .awards .tag { display: inline-block; margin-bottom: 8px; }
