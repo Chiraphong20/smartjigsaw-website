@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Award, Calendar, ExternalLink, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import CardCarousel from '../components/CardCarousel'
 import Hero from '../components/Hero'
 import VideoSection from '../components/VideoSection'
 import SocialFeed from '../components/SocialFeed'
@@ -87,7 +88,7 @@ export default function Home() {
         <section className="section" id="awards">
           <div className="wrap">
             <div className="section-head"><div data-edit="HOME"><h2>{HOME.awardsTitle}</h2><p>{HOME.awardsText}</p></div></div>
-            <ul className="awards">
+            <CardCarousel tag="ul" className="awards" label={HOME.awardsTitle}>
               {AWARDS.map((a, i) => {
                 const href = safeUrl(a.url)
                 const body = (
@@ -105,7 +106,7 @@ export default function Home() {
                   </li>
                 )
               })}
-            </ul>
+            </CardCarousel>
           </div>
         </section>
       )}
@@ -115,7 +116,7 @@ export default function Home() {
           <div className="section-head">
             <div data-edit="HOME"><h2>{HOME.eventsTitle}</h2><p>{HOME.eventsText}</p></div>
           </div>
-          <div className="grid c3">
+          <CardCarousel label={HOME.eventsTitle}>
             {EVENTS.map((e, i) => (
               <article key={i} data-edit={`EVENTS:${i}`} className="card media">
                 <Cover image={e.image} color={e.color} alt={e.title} />
@@ -126,7 +127,7 @@ export default function Home() {
                 </div>
               </article>
             ))}
-          </div>
+          </CardCarousel>
         </div>
       </section>}
 
@@ -136,7 +137,7 @@ export default function Home() {
             <div data-edit="HOME"><h2>{HOME.newsTitle}</h2><p>{HOME.newsText}</p></div>
             <Link to="/knowledge" className="link-more">{t('ดูบทความทั้งหมด')} <ArrowRight size={16} /></Link>
           </div>
-          <div className="grid c3">
+          <CardCarousel label={HOME.newsTitle}>
             {NEWS.map((n, i) => (
               <article key={i} data-edit={`NEWS:${i}`} className="card media">
                 <Cover image={n.image} color={n.color} alt={n.title} />
@@ -147,7 +148,7 @@ export default function Home() {
                 </div>
               </article>
             ))}
-          </div>
+          </CardCarousel>
         </div>
       </section>}
 

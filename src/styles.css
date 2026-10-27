@@ -344,3 +344,16 @@ body.sj-preview .cookie { display: none; }
 @media (max-width: 700px) {
   .ad.has-img .ad-body { position: static; max-width: none; padding: 20px; }
 }
+
+/* แถวการ์ดเลื่อนได้ (CardCarousel): ‹ การ์ด × 3 › */
+.cc { display: flex; align-items: center; gap: 12px; }
+.cc.top { align-items: flex-start; }
+.cc.top .cc-btn { margin-top: 90px; }
+.cc-track { --cc-n: 3; --cc-gap: 20px; flex: 1; min-width: 0; display: flex; gap: var(--cc-gap); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; list-style: none; margin: 0; padding: 0; }
+.cc-track::-webkit-scrollbar { display: none; }
+.cc-track > * { flex: 0 0 calc((100% - var(--cc-gap) * (var(--cc-n) - 1)) / var(--cc-n)); min-width: 0; scroll-snap-align: start; }
+.cc-btn { flex: none; }
+.cc-btn:disabled { opacity: 0.35; cursor: default; }
+@media (max-width: 900px) { .cc-track { --cc-n: 2; } }
+@media (max-width: 600px) { .cc-track { --cc-n: 1; } .cc { gap: 6px; } .cc-btn { width: 34px; height: 34px; } }
+.cc-track.start { align-items: flex-start; }

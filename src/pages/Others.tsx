@@ -1,3 +1,4 @@
+import CardCarousel from '../components/CardCarousel'
 import { useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
@@ -67,7 +68,7 @@ export function About() {
         <section className="section alt" id="team">
           <div className="wrap">
             <div className="section-head"><div data-edit="HOME"><h2>{HOME.teamTitle}</h2><p>{HOME.teamText}</p></div></div>
-            <ul className="team">
+            <CardCarousel tag="ul" className="team" label={HOME.teamTitle}>
               {TEAM.map((m, i) => (
                 <li key={i} data-edit={`TEAM:${i}`} className="card">
                   {safeUrl(m.photo)
@@ -78,7 +79,7 @@ export function About() {
                   {m.text && <p>{m.text}</p>}
                 </li>
               ))}
-            </ul>
+            </CardCarousel>
           </div>
         </section>
       )}

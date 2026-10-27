@@ -1,28 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Play } from 'lucide-react'
-import Pager from './Pager'
+import CardCarousel from './CardCarousel'
 import { PRODUCTS, VIDEOS, safeUrl } from '../site'
 import { t } from '../i18n'
 
-const PER_PAGE = 3
-
 export default function VideoSection() {
-  const [page, setPage] = useState(0)
   const [playing, setPlaying] = useState<number | null>(null)
-  // โหมดตัวอย่าง: แอดมินสั่งให้เปิดหน้าที่มีวิดีโอที่กำลังแก้อยู่
-  useEffect(() => {
-    const go = (e: Event) => setPage(Math.floor((e as CustomEvent<number>).detail / PER_PAGE))
-    window.addEventListener('sj-video-goto', go)
-    return () => window.removeEventListener('sj-video-goto', go)
-  }, [])
-  const pages = Math.ceil(VIDEOS.length / PER_PAGE)
-  const items = VIDEOS.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE)
 
   return (
-    <>
-      <div className="grid c3">
-        {items.map((v, n) => {
-          const id = page * PER_PAGE + n
+      <CardCarousel label={t('เลื่อนดูวิดีโอ')} gotoEvent="sj-video-goto">
+        {VIDEOS.map((v, id) => {
           const file = safeUrl(v.file)
           const yt = /^[\w-]{6,20}$/.test(v.youtubeId || '') ? v.youtubeId : ''
           const product = PRODUCTS.find(p => p.slug === v.product)
@@ -48,8 +35,6 @@ export default function VideoSection() {
             </article>
           )
         })}
-      </div>
-      <Pager page={page} pages={pages} onChange={p => { setPage(p); setPlaying(null) }} label={t('เลื่อนดูวิดีโอ')} />
-    </>
+      </CardCarousel>
   )
 }

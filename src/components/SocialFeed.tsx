@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { ExternalLink, Play } from 'lucide-react'
-import Pager from './Pager'
+import CardCarousel from './CardCarousel'
 import { SOCIAL_POSTS, cssUrl, safeUrl, thaiDate } from '../site'
 import { t } from '../i18n'
 
-const PER_PAGE = 3
 const PLATFORM: Record<string, string> = { facebook: 'Facebook', instagram: 'Instagram', tiktok: 'TikTok', youtube: 'YouTube', other: 'โซเชียล' }
 
 // แปลงลิงก์โพสต์เป็นลิงก์ฝัง (iframe) ของแพลตฟอร์มนั้น — ไม่โหลดสคริปต์ภายนอก, รับเฉพาะโดเมนที่ระบุ, ไม่รู้จัก = null (แสดงเป็นการ์ดเปิดต้นฉบับแทน)
@@ -31,22 +30,11 @@ function embedOf(platform: string, raw: string): { src: string; ratio: string } 
 }
 
 export default function SocialFeed() {
-  const [page, setPage] = useState(0)
   const [loaded, setLoaded] = useState<number | null>(null)
-  // โหมดตัวอย่าง: แอดมินสั่งให้เปิดหน้าที่มีโพสต์ที่กำลังแก้อยู่
-  useEffect(() => {
-    const go = (e: Event) => setPage(Math.floor((e as CustomEvent<number>).detail / PER_PAGE))
-    window.addEventListener('sj-social-goto', go)
-    return () => window.removeEventListener('sj-social-goto', go)
-  }, [])
-  const pages = Math.ceil(SOCIAL_POSTS.length / PER_PAGE)
-  const items = SOCIAL_POSTS.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE)
 
   return (
-    <>
-      <div className="grid c3" style={{ alignItems: "start" }}>
-        {items.map((p, n) => {
-          const id = page * PER_PAGE + n
+      <CardCarousel className="start" label={t('เลื่อนดูคอนเทนต์โซเชียล')} gotoEvent="sj-social-goto">
+        {SOCIAL_POSTS.map((p, id) => {
           const href = safeUrl(p.url)
           const emb = href && p.show !== 'card' ? embedOf(p.platform, href) : null
           const name = p.platform === 'other' || !PLATFORM[p.platform] ? t('โซเชียล') : PLATFORM[p.platform]
@@ -75,8 +63,6 @@ export default function SocialFeed() {
             </article>
           )
         })}
-      </div>
-      <Pager page={page} pages={pages} onChange={p => { setPage(p); setLoaded(null) }} label={t('เลื่อนดูคอนเทนต์โซเชียล')} />
-    </>
+      </CardCarousel>
   )
 }
