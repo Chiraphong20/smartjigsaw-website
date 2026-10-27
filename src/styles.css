@@ -314,3 +314,14 @@ body.sj-preview .cookie { display: none; }
 .lang button { display: inline-flex; align-items: center; gap: 5px; }
 .lang .flag { width: 18px; height: 12px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35); flex: none; }
 .lang button[aria-pressed='false'] .flag { opacity: 0.7; }
+
+/* แถบเมนู: โลโก้ไม่หดจนชนเมนู · แถบกว้างกว่าเนื้อหาเล็กน้อยเพื่อรองรับเมนูภาษาอังกฤษที่ยาวกว่า */
+.logo { flex: none; }
+.header .wrap, .topbar .wrap { max-width: max(var(--maxw, 1180px), 1360px); }
+@media (min-width: 921px) and (max-width: 1360px) {
+  .header .wrap { gap: 12px; }
+  .nav a.top, .nav span.top { padding: 9px 8px; font-size: 0.9rem; }
+  .header-tools { gap: 6px; }
+  .demo-btn { padding-inline: 14px; }
+}
+@media (min-width: 921px) and (max-width: 1060px) { .demo-btn { display: none; } }
