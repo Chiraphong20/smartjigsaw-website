@@ -4,7 +4,7 @@ import Hero from '../components/Hero'
 import VideoSection from '../components/VideoSection'
 import SocialFeed from '../components/SocialFeed'
 import AdBanner from '../components/AdBanner'
-import { BRAND, COMPANY, PROGRAMS, CUSTOMERS, EVENTS, HOME, NEWS, AWARDS, SOCIAL_POSTS, safeUrl, thaiDate } from '../site'
+import { BRAND, COMPANY, PROGRAMS, EVENTS, HOME, NEWS, AWARDS, SOCIAL_POSTS, safeUrl, thaiDate } from '../site'
 import { t, getLang } from '../i18n'
 
 // ภาพประกอบ: ถ้ามีไฟล์ใน public/ ให้ใส่ path ที่ image ใน site.ts, ไม่มีจะใช้พื้นสีไล่เฉดแทน
@@ -108,18 +108,6 @@ export default function Home() {
           </div>
         </section>
       )}
-
-      {CUSTOMERS.length > 0 && <section className="section alt" id="customers">
-        <div className="wrap">
-          <div className="section-head">
-            <div data-edit="HOME"><h2>{HOME.customersTitle}</h2><p>{HOME.customersText}</p></div>
-            <Link to="/customers" className="link-more">{t('ดูร้านลูกค้าทั้งหมด →')}</Link>
-          </div>
-          <ul className="logos">
-            {CUSTOMERS.map((c, i) => <li key={i} data-edit={`CUSTOMERS:${i}`}>{safeUrl(c.url) ? <a href={safeUrl(c.url)} target="_blank" rel="noopener noreferrer">{safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</a> : safeUrl(c.logo) ? <img src={safeUrl(c.logo)} alt={c.name} loading="lazy" /> : c.name}</li>)}
-          </ul>
-        </div>
-      </section>}
 
       {EVENTS.length > 0 && <section className="section" id="events">
         <div className="wrap">

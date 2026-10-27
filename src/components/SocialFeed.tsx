@@ -18,14 +18,7 @@ function embedOf(platform: string, raw: string): { src: string; ratio: string } 
     const id = host === 'youtu.be' ? path.slice(1) : u.searchParams.get('v') ?? path.match(/^\/(?:shorts|embed|live)\/([\w-]+)/)?.[1] ?? ''
     return /^[\w-]{6,20}$/.test(id) ? { src: `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`, ratio: path.startsWith('/shorts') ? '9 / 16' : '16 / 9' } : null
   }
-  if (platform === 'facebook' && (host === 'facebook.com' || host === 'fb.watch')) {
-    if (/^\/share\//.test(path)) return null // ลิงก์แชร์ (facebook.com/share/…) ฝังไม่ได้ — ให้ใช้ลิงก์จริงของโพสต์
-    const video = /\/(videos?|reel|watch)\b/.test(path) || host === 'fb.watch'
-    const href = encodeURIComponent(raw)
-    return video
-      ? { src: `https://www.facebook.com/plugins/video.php?href=${href}&show_text=false&width=500`, ratio: '16 / 9' }
-      : { src: `https://www.facebook.com/plugins/post.php?href=${href}&show_text=true&width=500`, ratio: '1 / 1.2' }
-  }
+  // Facebook ไม่ฝัง (ปลั๊กอินมักขึ้น "ไม่พร้อมใช้งาน" และหน้าตาไม่คงที่) — แสดงเป็นการ์ดที่ลิงก์ไปโพสต์จริง
   if (platform === 'instagram' && host === 'instagram.com') {
     const m = path.match(/^\/(p|reel|tv)\/([\w-]+)/)
     return m ? { src: `https://www.instagram.com/${m[1]}/${m[2]}/embed`, ratio: '4 / 5.4' } : null
