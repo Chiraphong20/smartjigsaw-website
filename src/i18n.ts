@@ -271,6 +271,8 @@ const EN: Record<string, string> = {
   'เขียนโปรแกรมบนมาตรฐานสากล มุ่งเน้นระบบโมดูลาร์ที่ขยายได้ เพื่อรองรับการสเกลอัปหรือต่อยอดในอนาคตอย่างราบรื่น': 'We program on international standards with extensible modular systems, so scaling up or building on them later is smooth.',
   'จิรพงศ์ ศรีอำไพ': 'Chiraphong Sri-amphai',
   'โพสต์ใหม่': 'New post',
+  'รางวัลและการรับรอง': 'Awards & Certifications',
+  'ความน่าเชื่อถือที่ได้รับจากหน่วยงานและสถาบัน': 'Recognition we have received from organizations and institutions',
   'นักพัฒนาซอฟต์แวร์': 'Software Developer',
   'ผู้ก่อตั้ง': 'Founder',
   'นักออกแบบ': 'Designer',

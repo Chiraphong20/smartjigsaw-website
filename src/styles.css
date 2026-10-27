@@ -325,3 +325,12 @@ body.sj-preview .cookie { display: none; }
   .demo-btn { padding-inline: 14px; }
 }
 @media (min-width: 921px) and (max-width: 1060px) { .demo-btn { display: none; } }
+
+/* รางวัลและการรับรอง */
+.awards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 20px; }
+.awards li { text-align: center; }
+.award-link { display: block; color: inherit; }
+.award-badge { height: 96px; display: grid; place-items: center; margin-bottom: 12px; color: var(--primary); }
+.award-badge img { max-height: 96px; max-width: 80%; object-fit: contain; }
+.awards h3 { margin-bottom: 8px; }
+.awards .tag { display: inline-block; margin-bottom: 8px; }

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Calendar, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { ArrowRight, Award, Calendar, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import Hero from '../components/Hero'
 import VideoSection from '../components/VideoSection'
 import SocialFeed from '../components/SocialFeed'
 import AdBanner from '../components/AdBanner'
-import { BRAND, COMPANY, PROGRAMS, CUSTOMERS, EVENTS, HOME, NEWS, SOCIAL_POSTS, safeUrl, thaiDate } from '../site'
+import { BRAND, COMPANY, PROGRAMS, CUSTOMERS, EVENTS, HOME, NEWS, AWARDS, SOCIAL_POSTS, safeUrl, thaiDate } from '../site'
 import { t, getLang } from '../i18n'
 
 // ภาพประกอบ: ถ้ามีไฟล์ใน public/ ให้ใส่ path ที่ image ใน site.ts, ไม่มีจะใช้พื้นสีไล่เฉดแทน
@@ -82,6 +82,32 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {AWARDS.length > 0 && (
+        <section className="section" id="awards">
+          <div className="wrap">
+            <div className="section-head"><div data-edit="HOME"><h2>{HOME.awardsTitle}</h2><p>{HOME.awardsText}</p></div></div>
+            <ul className="awards">
+              {AWARDS.map((a, i) => {
+                const href = safeUrl(a.url)
+                const body = (
+                  <>
+                    <div className="award-badge">{safeUrl(a.image) ? <img src={safeUrl(a.image)} alt="" loading="lazy" /> : <Award size={34} aria-hidden="true" />}</div>
+                    <h3>{a.title}</h3>
+                    {(a.issuer || a.year) && <span className="tag">{[a.issuer, a.year].filter(Boolean).join(' · ')}</span>}
+                    {a.text && <p>{a.text}</p>}
+                  </>
+                )
+                return (
+                  <li key={i} data-edit={`AWARDS:${i}`} className="card">
+                    {href ? <a href={href} target="_blank" rel="noopener noreferrer" className="award-link">{body}</a> : body}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {CUSTOMERS.length > 0 && <section className="section alt" id="customers">
         <div className="wrap">
