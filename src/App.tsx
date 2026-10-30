@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import { ProductDetail, Products } from './pages/Products'
 import { ArticlePage, Knowledge } from './pages/Knowledge'
 import { Customers } from './pages/Customers'
+import Events from './pages/Events'
 import { About, Account, Contact, NotFound, Services, Training } from './pages/Others'
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="knowledge" element={<Knowledge />} />
         <Route path="knowledge/:slug" element={<ArticlePage />} />
         <Route path="customers" element={<Customers />} />
+        <Route path="events" element={<Events />} />
         <Route path="services" element={<Services />} />
         <Route path="training" element={<Training />} />
         <Route path="about" element={<About />} />

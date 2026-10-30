@@ -1,8 +1,8 @@
-import CardCarousel from '../components/CardCarousel'
+import TeamSection from '../components/TeamSection'
 import { useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
-import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
-import { API_BASE, BRAND, COMPANY, COURSES, PRODUCTS, SERVICES, HOME, TEAM, safeUrl } from '../site'
+import { ArrowRight, Clock, Layers, Mail, MapPin, MessageCircle, Phone, Settings, Sprout } from 'lucide-react'
+import { API_BASE, BRAND, COMPANY, COURSES, PRODUCTS, SERVICES, HOME, safeUrl } from '../site'
 import { PageHead } from './Products'
 import { t, getLang } from '../i18n'
 
@@ -16,18 +16,45 @@ export function NotFound() {
   )
 }
 
+// ไอคอนประจำค่านิยมแต่ละข้อ (วนซ้ำถ้ามีมากกว่า 4 ข้อ)
+const HOW_ICONS = [Layers, MessageCircle, Settings, Sprout]
+
+// "ความเรียบง่าย (Simplicity)" → ชื่อไทย + ป้ายอังกฤษ
+function splitTitle(title: string): [string, string] {
+  const m = title.match(/^(.*?)\s*\((.+)\)\s*$/)
+  return m ? [m[1], m[2]] : [title, '']
+}
+
 export function Services() {
   return (
-    <>
-      <PageHead title={t('วิธีทำงานของเรา')} lead={t('ค่านิยม 4 ข้อที่เรายึดถือในการทำงานกับลูกค้า')} crumbs={[{ label: t('วิธีทำงาน') }]} />
-      <section className="section"><div className="wrap grid c2">
-        {SERVICES.map((s, n) => <div key={s.title} data-edit={`SERVICES:${n}`} className="card"><h3>{s.title}</h3><p>{s.text}</p></div>)}
-      </div></section>
-      <section className="section alt"><div className="wrap">
-        <div className="band"><div><h2>{t('อยากคุยกับทีมงาน?')}</h2><p>{t('โทร')} {BRAND.servicePhone}{BRAND.line ? ` · ${t('ไลน์')} ${BRAND.line}` : ''}{BRAND.hours ? ` · ${BRAND.hours}` : ''}</p></div>
-          <Link to="/contact" className="btn accent">{t('ติดต่อเรา')}</Link></div>
-      </div></section>
-    </>
+    <div className="how">
+      <section className="section how-sec">
+        <div className="wrap">
+          <header className="how-head">
+            <h1>{t('วิธีทำงานของเรา')}</h1>
+            <p>{t('ค่านิยม 4 ข้อที่เรายึดถือในการทำงานกับลูกค้า')}</p>
+          </header>
+          <div className="how-grid">
+            {SERVICES.map((s, n) => {
+              const Icon = HOW_ICONS[n % HOW_ICONS.length]
+              const [name, en] = splitTitle(s.title)
+              return (
+                <article key={s.title} data-edit={`SERVICES:${n}`} className="how-card">
+                  <span className="how-icon" aria-hidden="true"><Icon size={40} strokeWidth={1.8} /></span>
+                  <div>
+                    <h2>{name}</h2>
+                    {en && <span className="how-en">{en}</span>}
+                    <span className="how-rule" aria-hidden="true" />
+                    <p>{s.text}</p>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
+          <div className="how-cta"><Link to="/contact" className="btn accent">{t('พูดคุยกับทีมงาน')} <ArrowRight size={18} /></Link></div>
+        </div>
+      </section>
+    </div>
   )
 }
 
@@ -64,25 +91,7 @@ export function About() {
           {COMPANY.stats.map((s, i) => <div key={i} className="stat"><b>{s.n}</b><span>{s.label}</span></div>)}
         </div>
       </div></section>
-      {TEAM.length > 0 && (
-        <section className="section alt" id="team">
-          <div className="wrap">
-            <div className="section-head"><div data-edit="HOME"><h2>{HOME.teamTitle}</h2><p>{HOME.teamText}</p></div></div>
-            <CardCarousel tag="ul" className="team" label={HOME.teamTitle}>
-              {TEAM.map((m, i) => (
-                <li key={i} data-edit={`TEAM:${i}`} className="card">
-                  {safeUrl(m.photo)
-                    ? <img className="team-photo" src={safeUrl(m.photo)} alt={m.name} loading="lazy" />
-                    : <div className="team-photo" style={{ background: m.color || 'var(--primary)' }} aria-hidden="true">{m.name.trim().slice(0, 1)}</div>}
-                  <h3>{m.name}</h3>
-                  <span className="tag">{m.role}</span>
-                  {m.text && <p>{m.text}</p>}
-                </li>
-              ))}
-            </CardCarousel>
-          </div>
-        </section>
-      )}
+      <TeamSection />
     </>
   )
 }
